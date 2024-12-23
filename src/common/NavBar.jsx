@@ -3,13 +3,42 @@ import { GoHome } from "react-icons/go";
 import { IoIosLogIn } from "react-icons/io";
 import { MdAppRegistration } from "react-icons/md";
 import { VscPreview } from "react-icons/vsc";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../context/authContext/AuthContext";
 import { useContext } from "react";
 import userIco from "../assets/user.png";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, signOutUser } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        signOutUser()
+            .then(() => {
+                console.log("User signed out successfully");
+                Swal.fire({
+                    title: "Success!",
+                    text: "User signed out successfully",
+                    icon: "success",
+                    confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "bg-[#357ef0] text-white",
+                    },
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                Swal.fire({
+                    title: "Error!",
+                    text: error.message,
+                    icon: "error",
+                    confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "bg-error text-white",
+                    },
+                });
+            });
+    };
 
     const links = (
         <>
@@ -120,12 +149,12 @@ const NavBar = () => {
                                 alt=""
                             />
                         </div>
-                        <button className="btn btn-error text-white">
+                        <button onClick={handleSignOut} className="btn btn-error text-white">
                             Log Out
                         </button>
                     </div>
                 ) : (
-                    <a className="btn bg-[#357ef0] text-white">Login</a>
+                    <Link to={'/login'} className="btn bg-[#357ef0] text-white">Login</Link>
                 )}
             </div>
         </div>
