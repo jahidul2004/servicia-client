@@ -1,4 +1,8 @@
 import { FaServicestack } from "react-icons/fa";
+import { GoHome } from "react-icons/go";
+import { IoIosLogIn } from "react-icons/io";
+import { MdAppRegistration } from "react-icons/md";
+import { VscPreview } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
@@ -13,6 +17,7 @@ const NavBar = () => {
                             : "bg-transparent text-black"
                     }
                 >
+                    <GoHome />
                     Home
                 </NavLink>
             </li>
@@ -25,6 +30,7 @@ const NavBar = () => {
                             : "bg-transparent text-black"
                     }
                 >
+                    <VscPreview />
                     Services
                 </NavLink>
             </li>
@@ -37,6 +43,7 @@ const NavBar = () => {
                             : "bg-transparent text-black"
                     }
                 >
+                    <MdAppRegistration />
                     Register
                 </NavLink>
             </li>
@@ -49,6 +56,7 @@ const NavBar = () => {
                             : "bg-transparent text-black"
                     }
                 >
+                    <IoIosLogIn />
                     Login
                 </NavLink>
             </li>
