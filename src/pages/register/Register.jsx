@@ -5,7 +5,7 @@ import AuthContext from "../../context/authContext/AuthContext";
 import Swal from "sweetalert2";
 
 const Register = () => {
-    const { registerUser, setUser } = useContext(AuthContext);
+    const { registerUser, setUser, updateUserProfile } = useContext(AuthContext);
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -22,6 +22,10 @@ const Register = () => {
         registerUser(email, password)
             .then((user) => {
                 console.log(user);
+                updateUserProfile({
+                    displayName: name,
+                    photoURL: photoURL,
+                });
                 setUser(user);
                 if (user) {
                     Swal.fire({

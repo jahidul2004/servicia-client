@@ -193,11 +193,7 @@ const NavBar = () => {
                         <div className="w-[50px] h-[50px] rounded-full border p-[2px]">
                             <img
                                 className="w-full h-full rounded-full"
-                                src={
-                                    user.displayImage
-                                        ? user.displayImage
-                                        : userIco
-                                }
+                                src={user.photoURL ? user.photoURL : userIco}
                                 alt=""
                             />
                         </div>
