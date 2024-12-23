@@ -1,19 +1,62 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/authContext/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const { loginUser } = useContext(AuthContext);
+
+    const handleLoginUser = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+        loginUser(email, password)
+            .then((user) => {
+                console.log(user);
+
+                if (user) {
+                    Swal.fire({
+                        title: "Success!",
+                        text: "Login successfully",
+                        icon: "success",
+                        confirmButtonText: "Close",
+                        customClass: {
+                            confirmButton: "bg-[#357ef0] text-white",
+                        },
+                    });
+                    form.reset();
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                Swal.fire({
+                    title: "Error!",
+                    text: error.message,
+                    icon: "error",
+                    confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "bg-error text-white",
+                    },
+                });
+            });
+    };
     return (
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-10">
             <h1 className="text-3xl font-bold text-center py-4 text-[#357ef0]">
                 Login
             </h1>
-            <form className="card-body">
+            <form onSubmit={handleLoginUser} className="card-body">
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
                     <input
+                        name="email"
                         type="email"
                         placeholder="email"
                         className="input input-bordered"
@@ -25,6 +68,7 @@ const Login = () => {
                         <span className="label-text">Password</span>
                     </label>
                     <input
+                        name="password"
                         type="password"
                         placeholder="password"
                         className="input input-bordered"
