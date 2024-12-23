@@ -1,7 +1,12 @@
 import { FaServicestack } from "react-icons/fa";
 import { GoHome } from "react-icons/go";
 import { IoIosLogIn } from "react-icons/io";
-import { MdAppRegistration } from "react-icons/md";
+import {
+    MdAppRegistration,
+    MdAssignmentAdd,
+    MdOutlineDesignServices,
+    MdOutlineReviews,
+} from "react-icons/md";
 import { VscPreview } from "react-icons/vsc";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../context/authContext/AuthContext";
@@ -68,32 +73,79 @@ const NavBar = () => {
                     Services
                 </NavLink>
             </li>
-            <li>
-                <NavLink
-                    to="/register"
-                    className={({ isActive }) =>
-                        isActive
-                            ? "bg-[#357ef0] text-white"
-                            : "bg-transparent text-black"
-                    }
-                >
-                    <MdAppRegistration />
-                    Register
-                </NavLink>
-            </li>
-            <li>
-                <NavLink
-                    to="/login"
-                    className={({ isActive }) =>
-                        isActive
-                            ? "bg-[#357ef0] text-white"
-                            : "bg-transparent text-black"
-                    }
-                >
-                    <IoIosLogIn />
-                    Login
-                </NavLink>
-            </li>
+            {user ? (
+                <>
+                    <li>
+                        <NavLink
+                            to="/addService"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-[#357ef0] text-white"
+                                    : "bg-transparent text-black"
+                            }
+                        >
+                            <MdAssignmentAdd />
+                            Add Service
+                        </NavLink>
+                    </li>
+
+                    <li>
+                        <NavLink
+                            to="/myServices"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-[#357ef0] text-white"
+                                    : "bg-transparent text-black"
+                            }
+                        >
+                            <MdOutlineDesignServices />
+                            My Services
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/myReviews"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-[#357ef0] text-white"
+                                    : "bg-transparent text-black"
+                            }
+                        >
+                            <MdOutlineReviews />
+                            My Reviews
+                        </NavLink>
+                    </li>
+                </>
+            ) : (
+                <>
+                    <li>
+                        <NavLink
+                            to="/register"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-[#357ef0] text-white"
+                                    : "bg-transparent text-black"
+                            }
+                        >
+                            <MdAppRegistration />
+                            Register
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-[#357ef0] text-white"
+                                    : "bg-transparent text-black"
+                            }
+                        >
+                            <IoIosLogIn />
+                            Login
+                        </NavLink>
+                    </li>
+                </>
+            )}
         </>
     );
     return (
@@ -149,12 +201,17 @@ const NavBar = () => {
                                 alt=""
                             />
                         </div>
-                        <button onClick={handleSignOut} className="btn btn-error text-white">
+                        <button
+                            onClick={handleSignOut}
+                            className="btn btn-error text-white"
+                        >
                             Log Out
                         </button>
                     </div>
                 ) : (
-                    <Link to={'/login'} className="btn bg-[#357ef0] text-white">Login</Link>
+                    <Link to={"/login"} className="btn bg-[#357ef0] text-white">
+                        Login
+                    </Link>
                 )}
             </div>
         </div>
