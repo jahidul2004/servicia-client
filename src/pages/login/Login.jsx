@@ -5,7 +5,7 @@ import AuthContext from "../../context/authContext/AuthContext";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, setUser } = useContext(AuthContext);
 
     const handleLoginUser = (event) => {
         event.preventDefault();
@@ -18,7 +18,7 @@ const Login = () => {
         loginUser(email, password)
             .then((user) => {
                 console.log(user);
-
+                setUser(user);
                 if (user) {
                     Swal.fire({
                         title: "Success!",
