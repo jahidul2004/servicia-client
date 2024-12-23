@@ -4,8 +4,13 @@ import { IoIosLogIn } from "react-icons/io";
 import { MdAppRegistration } from "react-icons/md";
 import { VscPreview } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../context/authContext/AuthContext";
+import { useContext } from "react";
+import userIco from "../assets/user.png";
 
 const NavBar = () => {
+    const { user } = useContext(AuthContext);
+
     const links = (
         <>
             <li>
@@ -102,7 +107,26 @@ const NavBar = () => {
                 <ul className="menu menu-horizontal px-1">{links}</ul>
             </div>
             <div className="navbar-end">
-                <a className="btn bg-[#357ef0] text-white">Login</a>
+                {user ? (
+                    <div className="flex gap-2">
+                        <div className="w-[50px] h-[50px] rounded-full border p-[2px]">
+                            <img
+                                className="w-full h-full rounded-full"
+                                src={
+                                    user.displayImage
+                                        ? user.displayImage
+                                        : userIco
+                                }
+                                alt=""
+                            />
+                        </div>
+                        <button className="btn btn-error text-white">
+                            Log Out
+                        </button>
+                    </div>
+                ) : (
+                    <a className="btn bg-[#357ef0] text-white">Login</a>
+                )}
             </div>
         </div>
     );
