@@ -1,3 +1,4 @@
+import Footer from "../common/Footer";
 import NavBar from "../common/NavBar";
 
 const MainLayout = () => {
@@ -6,6 +7,10 @@ const MainLayout = () => {
             {/* Navbar start */}
             <NavBar></NavBar>
             {/* Navbar end */}
+
+            {/* Footer start */}
+            <Footer></Footer>
+            {/* Footer end */}
         </div>
     );
 };
