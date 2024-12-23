@@ -6,6 +6,7 @@ import Register from "../pages/register/Register";
 import Home from "../pages/home/Home";
 import PrivateRoute from "./PrivateRoute";
 import AddService from "../pages/addService/AddService";
+import SecureLoginRegister from "./SecureLoginRegister";
 
 const router = createBrowserRouter([
     {
@@ -19,11 +20,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/login",
-                element: <Login></Login>,
+                element: (
+                    <SecureLoginRegister>
+                        <Login></Login>
+                    </SecureLoginRegister>
+                ),
             },
             {
                 path: "/register",
-                element: <Register></Register>,
+                element: (
+                    <SecureLoginRegister>
+                        <Register></Register>
+                    </SecureLoginRegister>
+                ),
             },
             {
                 path: "/abc",
