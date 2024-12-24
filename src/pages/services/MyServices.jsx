@@ -38,13 +38,24 @@ const MyServices = () => {
 
     const handleUpdateSubmit = (e) => {
         e.preventDefault();
-        const { _id, serviceTitle, description, price } = selectedService;
+        const {
+            _id,
+            serviceTitle,
+            description,
+            price,
+            category,
+            companyName,
+            websiteURL,
+        } = selectedService;
 
         axios
             .put(`http://localhost:3000/updateService/${_id}`, {
                 serviceTitle,
                 description,
                 price,
+                category,
+                companyName,
+                websiteURL,
             })
             .then((res) => {
                 console.log(res.data);
@@ -151,7 +162,44 @@ const MyServices = () => {
                         <h2 className="text-2xl font-bold mb-4">
                             Update Service
                         </h2>
-                        <form onSubmit={handleUpdateSubmit}>
+                        <form
+                            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                            onSubmit={handleUpdateSubmit}
+                        >
+                            <div className="mb-4">
+                                <label className="block font-semibold mb-1">
+                                    Image URL
+                                </label>
+                                <input
+                                    type="text"
+                                    value={selectedService.serviceImage}
+                                    onChange={(e) =>
+                                        setSelectedService({
+                                            ...selectedService,
+                                            serviceImage: e.target.value,
+                                        })
+                                    }
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block font-semibold mb-1">
+                                    Category
+                                </label>
+                                <input
+                                    type="text"
+                                    value={selectedService.category}
+                                    onChange={(e) =>
+                                        setSelectedService({
+                                            ...selectedService,
+                                            category: e.target.value,
+                                        })
+                                    }
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
                             <div className="mb-4">
                                 <label className="block font-semibold mb-1">
                                     Service Title
@@ -168,21 +216,7 @@ const MyServices = () => {
                                     className="input input-bordered w-full"
                                 />
                             </div>
-                            <div className="mb-4">
-                                <label className="block font-semibold mb-1">
-                                    Description
-                                </label>
-                                <textarea
-                                    value={selectedService.description}
-                                    onChange={(e) =>
-                                        setSelectedService({
-                                            ...selectedService,
-                                            description: e.target.value,
-                                        })
-                                    }
-                                    className="textarea textarea-bordered w-full"
-                                ></textarea>
-                            </div>
+
                             <div className="mb-4">
                                 <label className="block font-semibold mb-1">
                                     Price
@@ -198,6 +232,56 @@ const MyServices = () => {
                                     }
                                     className="input input-bordered w-full"
                                 />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block font-semibold mb-1">
+                                    Company Name
+                                </label>
+                                <input
+                                    type="text"
+                                    value={selectedService.companyName}
+                                    onChange={(e) =>
+                                        setSelectedService({
+                                            ...selectedService,
+                                            companyName: e.target.value,
+                                        })
+                                    }
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block font-semibold mb-1">
+                                    Website URL
+                                </label>
+                                <input
+                                    type="text"
+                                    value={selectedService.websiteURL}
+                                    onChange={(e) =>
+                                        setSelectedService({
+                                            ...selectedService,
+                                            websiteURL: e.target.value,
+                                        })
+                                    }
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="block font-semibold mb-1">
+                                    Description
+                                </label>
+                                <textarea
+                                    value={selectedService.description}
+                                    onChange={(e) =>
+                                        setSelectedService({
+                                            ...selectedService,
+                                            description: e.target.value,
+                                        })
+                                    }
+                                    className="textarea textarea-bordered w-full"
+                                ></textarea>
                             </div>
                             <div className="flex justify-end gap-2">
                                 <button
