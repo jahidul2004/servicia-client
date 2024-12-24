@@ -9,6 +9,7 @@ import AddService from "../pages/addService/AddService";
 import SecureLoginRegister from "./SecureLoginRegister";
 import ServiceDetails from "../pages/serviceDetails/ServiceDetails";
 import axios from "axios";
+import Services from "../pages/services/Services";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,16 @@ const router = createBrowserRouter([
                 loader: async ({ params }) => {
                     const res = await axios.get(
                         `http://localhost:3000/service/${params.id}`
+                    );
+                    return res.data;
+                },
+            },
+            {
+                path: "/services",
+                element: <Services></Services>,
+                loader: async () => {
+                    const res = await axios.get(
+                        "http://localhost:3000/services"
                     );
                     return res.data;
                 },
