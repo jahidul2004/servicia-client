@@ -189,10 +189,12 @@ const ServiceDetails = () => {
                     <h1 className="text-2xl font-bold">
                         Reviews of this service
                     </h1>
-                    <h1 className="text-xl font-bold">
-                        Total Review Count:{" "}
-                        {reviews.length === 0 ? 0 : reviews.length}
-                    </h1>
+                    <div className="bg-[#357ef0] text-white p-2 rounded-lg">
+                        <h1 className="text-xl font-bold">
+                            Total Review Count:{" "}
+                            {reviews.length === 0 ? 0 : reviews.length}
+                        </h1>
+                    </div>
                 </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
                     {reviews.map((review) => (
