@@ -94,7 +94,7 @@ const ServiceDetails = () => {
     };
 
     return (
-        <div className="mx-4 border-2 p-4 rounded-lg">
+        <div className="mx-4 p-4 rounded-lg">
             <div className="flex flex-col md:flex-row gap-4">
                 <div className="md:w-1/2 w-full h-[480px] rounded-lg">
                     <img
@@ -105,7 +105,7 @@ const ServiceDetails = () => {
                 </div>
                 <div className="md:w-1/2 w-full">
                     <div className="rounded-lg flex flex-col md:flex-row gap-2">
-                        <div className="bg-[#f1f1f1a1] rounded-lg p-4 w-full md:w-[60%]">
+                        <div className="bg-[#357df015] rounded-lg p-4 w-full md:w-[60%]">
                             <p className="font-bold flex items-center gap-2">
                                 <TbCategory />
                                 Category: {category}
@@ -120,7 +120,7 @@ const ServiceDetails = () => {
                                 Price: {price} $
                             </p>
                         </div>
-                        <div className="bg-[#f1f1f1a1] rounded-lg p-4 w-full md:w-[40%]">
+                        <div className="bg-[#f0ce3538] rounded-lg p-4 w-full md:w-[40%]">
                             <h1 className="text-xl font-bold mb-2">
                                 Company Information
                             </h1>
@@ -140,7 +140,7 @@ const ServiceDetails = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="bg-[#f1f1f1a1] rounded-lg p-4 mt-4">
+                    <div className="bg-[#35b5f02d] rounded-lg p-4 mt-4">
                         <form
                             onSubmit={handleReview}
                             className="flex flex-col gap-4"
@@ -158,18 +158,20 @@ const ServiceDetails = () => {
                                     name="rating"
                                     starDimension="30px"
                                     starSpacing="5px"
+                                    starEmptyColor="#f6cb69"
                                 />
                             </div>
                             <textarea
                                 value={review}
                                 onChange={(e) => setReview(e.target.value)}
-                                className="textarea textarea-bordered bg-transparent"
+                                className="textarea textarea-bordered border-2 border-[#357ef0] bg-transparent"
                                 name="review"
                                 placeholder="Write a review"
+                                required
                             ></textarea>
                             <button
                                 type="submit"
-                                className="btn bg-[#357ef0] text-white"
+                                className="btn bg-[#357ef0] text-white border-none"
                             >
                                 Submit
                             </button>
@@ -178,9 +180,9 @@ const ServiceDetails = () => {
                 </div>
             </div>
 
-            <div className="bg-[#f1f1f1a1] rounded-lg p-4 mt-4">
+            <div className="bg-[#5af03517] rounded-lg p-4 mt-4">
                 <h1 className="text-2xl font-bold">Reviews of this service</h1>
-                <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
                     {reviews.map((review) => (
                         <ReviewsCard
                             name={review.name}
