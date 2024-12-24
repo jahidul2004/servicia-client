@@ -47,6 +47,7 @@ const MyServices = () => {
             category,
             companyName,
             websiteURL,
+            serviceImage,
         } = selectedService;
 
         axios
@@ -57,6 +58,7 @@ const MyServices = () => {
                 category,
                 companyName,
                 websiteURL,
+                serviceImage,
             })
             .then((res) => {
                 console.log(res.data);
