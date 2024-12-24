@@ -8,7 +8,7 @@ const FeaturedServiceCard = ({
         <div className="border-2 rounded-lg p-4">
             <div className="bg-[#f1f1f1] p-2 rounded-lg h-[250px]">
                 <img
-                    className="rounded-lg w-full h-full"
+                    className="rounded-lg w-full h-full object-cover"
                     src={serviceImage}
                     alt=""
                 />
