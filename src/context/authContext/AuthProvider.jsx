@@ -5,12 +5,16 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signInWithEmailAndPassword,
+    signInWithPopup,
     signOut,
     updateProfile,
+    GoogleAuthProvider,
 } from "firebase/auth";
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const provider = new GoogleAuthProvider();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -35,13 +39,17 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     };
 
+    const googleLogin = () => {
+        return signInWithPopup(auth, provider);
+    };
+
     const signOutUser = () => {
         return signOut(auth);
     };
 
     const updateUserProfile = (user) => {
         return updateProfile(auth.currentUser, user);
-    }
+    };
 
     const data = {
         user,
@@ -52,6 +60,7 @@ const AuthProvider = ({ children }) => {
         updateUserProfile,
         loading,
         setLoading,
+        googleLogin,
     };
 
     return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;

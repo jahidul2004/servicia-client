@@ -5,7 +5,8 @@ import AuthContext from "../../context/authContext/AuthContext";
 import Swal from "sweetalert2";
 
 const Register = () => {
-    const { registerUser, setUser, updateUserProfile } = useContext(AuthContext);
+    const { registerUser, setUser, updateUserProfile, googleLogin } =
+        useContext(AuthContext);
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -128,6 +129,39 @@ const Register = () => {
                 </p>
                 <div>
                     <button
+                        onClick={() => {
+                            googleLogin()
+                                .then((user) => {
+                                    console.log(user);
+                                    setUser(user);
+
+                                    if (user) {
+                                        Swal.fire({
+                                            title: "Success!",
+                                            text: "Logged in successfully",
+                                            icon: "success",
+                                            confirmButtonText: "Close",
+                                            customClass: {
+                                                confirmButton:
+                                                    "bg-[#357ef0] text-white",
+                                            },
+                                        });
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                    Swal.fire({
+                                        title: "Error!",
+                                        text: error.message,
+                                        icon: "error",
+                                        confirmButtonText: "Close",
+                                        customClass: {
+                                            confirmButton:
+                                                "bg-error text-white",
+                                        },
+                                    });
+                                });
+                        }}
                         type="button"
                         className="btn w-full bg-[#357ef0] text-white"
                     >
