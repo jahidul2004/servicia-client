@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/authContext/AuthContext";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const MyServices = () => {
     const { user } = useContext(AuthContext);
@@ -22,6 +23,42 @@ const MyServices = () => {
     const filteredServices = myServices.filter((service) =>
         service.serviceTitle.toLowerCase().includes(searchKeyword.toLowerCase())
     );
+
+    const handleDeleteService = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios
+                    .delete(`http://localhost:3000/deleteService/${id}`)
+                    .then((res) => {
+                        console.log(res.data);
+                        setMyServices(
+                            myServices.filter((service) => service._id !== id)
+                        );
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your service has been deleted.",
+                            icon: "success",
+                        });
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        Swal.fire({
+                            title: "Error!",
+                            text: err.message,
+                            icon: "error",
+                        });
+                    });
+            }
+        });
+    };
 
     return (
         <div className="mx-4">
@@ -77,7 +114,12 @@ const MyServices = () => {
                             <button className="btn bg-[#357ef0] text-white">
                                 Update Service
                             </button>
-                            <button className="btn bg-[#357ef0] text-white">
+                            <button
+                                onClick={() => {
+                                    handleDeleteService(service._id);
+                                }}
+                                className="btn bg-[#357ef0] text-white"
+                            >
                                 Delete Service
                             </button>
                         </div>
