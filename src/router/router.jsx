@@ -46,7 +46,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "serviceDetails/:id",
-                element: <ServiceDetails></ServiceDetails>,
+                element: (
+                    <PrivateRoute>
+                        <ServiceDetails></ServiceDetails>
+                    </PrivateRoute>
+                ),
                 loader: async ({ params }) => {
                     const res = await axios.get(
                         `http://localhost:3000/service/${params.id}`
