@@ -123,7 +123,7 @@ const MyReviews = () => {
                 {myReviews.map((review) => (
                     <div
                         key={review._id}
-                        className="bg-gray-100 border-l-8 border-[#357ef0] p-4 my-4"
+                        className="bg-[#357df017] border-l-8 border-[#357ef0] p-4 my-4"
                     >
                         <p className="font-semibold">{review.postedDate}</p>
                         <h3 className="text-xl font-bold">

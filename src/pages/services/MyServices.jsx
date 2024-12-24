@@ -168,7 +168,7 @@ const MyServices = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {filteredServices.map((service) => (
-                    <div className="border-2 rounded-lg p-4" key={service._id}>
+                    <div className="bg-[#357df017] rounded-lg p-4" key={service._id}>
                         <div className="h-[300px]">
                             <img
                                 className="w-full h-full rounded-lg object-cover"

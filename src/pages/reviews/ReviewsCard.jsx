@@ -2,7 +2,7 @@ import StarRatings from "react-star-ratings";
 
 const ReviewsCard = ({ rating, name, photoURL, reviewText, postedDate }) => {
     return (
-        <div className="bg-[#dbf1fc] border-l-8 border-[#357ef0] p-4 relative">
+        <div className="bg-[#357df015] border-l-8 border-[#357ef0] p-4 relative">
             <div>
                 <div className="w-[50px] h-[50px] rounded-full border-2 border-[#357ef0] p-1">
                     <img className="rounded-full" src={photoURL} alt="" />
