@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import Partners from "../partners/Partners";
 import HomeStat from "../homeStat/HomeStat";
 import LatestBlog from "../latestBlog/LatestBlog";
+import NewsLetter from "../newsLetter/NewsLetter";
 
 const Home = () => {
     return (
@@ -30,6 +31,10 @@ const Home = () => {
             {/* Latest Blog section start */}
             <LatestBlog></LatestBlog>
             {/* Latest Blog section end */}
+
+            {/* Newsletter */}
+            <NewsLetter></NewsLetter>
+            {/* Newsletter end */}
         </div>
     );
 };
