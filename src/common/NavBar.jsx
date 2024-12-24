@@ -91,7 +91,7 @@ const NavBar = () => {
 
                     <li>
                         <NavLink
-                            to="/myServices"
+                            to={`/myServices/${user.email}`}
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-[#357ef0] text-white"
@@ -190,7 +190,10 @@ const NavBar = () => {
             <div className="navbar-end">
                 {user ? (
                     <div className="flex gap-2">
-                        <div className="w-[50px] h-[50px] rounded-full border p-[2px]">
+                        <div
+                            title={user.displayName ? user.displayName : ""}
+                            className="w-[50px] h-[50px] rounded-full border-2 border-[#357ef0] p-[4px]"
+                        >
                             <img
                                 className="w-full h-full rounded-full"
                                 src={user.photoURL ? user.photoURL : userIco}

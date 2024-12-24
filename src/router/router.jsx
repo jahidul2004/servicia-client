@@ -10,6 +10,7 @@ import SecureLoginRegister from "./SecureLoginRegister";
 import ServiceDetails from "../pages/serviceDetails/ServiceDetails";
 import axios from "axios";
 import Services from "../pages/services/Services";
+import MyServices from "../pages/services/MyServices";
 
 const router = createBrowserRouter([
     {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
                     return res.data;
                 },
             },
+            {
+                path:"/myServices/:email",
+                element: <MyServices></MyServices>
+            }
         ],
     },
 ]);

@@ -17,7 +17,7 @@ const FeaturedServiceCard = ({
                 />
             </div>
             <div className="mt-4">
-                <h1 className="text-2xl font-bold">{serviceTitle}</h1>
+                <h1 className="text-2xl font-bold text-[#357ef0]">{serviceTitle}</h1>
                 <p className="font-semibold my-2">{description}</p>
                 <p className="font-bold">Price: {price} $</p>
                 <Link
