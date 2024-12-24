@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import FeaturedServiceCard from "../featuredService/FeaturedServiceCard";
+import { Helmet } from "react-helmet";
 
 const Services = () => {
     const data = useLoaderData();
@@ -7,6 +8,9 @@ const Services = () => {
     console.log(data);
     return (
         <div className="mx-4">
+            <Helmet>
+                <title>Servicia | Services</title>
+            </Helmet>
             <h1 className="text-3xl font-bold text-center text-[#357ef0] py-4">
                 All Services <br /> --------------------------
             </h1>

@@ -10,6 +10,7 @@ import ReviewsCard from "../reviews/ReviewsCard";
 import Swal from "sweetalert2";
 import { GrServicePlay } from "react-icons/gr";
 import { LuBadgeDollarSign } from "react-icons/lu";
+import { Helmet } from "react-helmet";
 
 const ServiceDetails = () => {
     const data = useLoaderData();
@@ -97,6 +98,9 @@ const ServiceDetails = () => {
 
     return (
         <div className="mx-4 p-4 rounded-lg">
+            <Helmet>
+                <title>Servicia | {serviceTitle}</title>
+            </Helmet>
             <div className="flex flex-col md:flex-row gap-4">
                 <div className="md:w-1/2 w-full h-[480px] rounded-lg bg-[#dbf1fc] p-4">
                     <img

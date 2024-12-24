@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import AuthContext from "../../context/authContext/AuthContext";
+import { Helmet } from "react-helmet";
 
 const AddService = () => {
     const { user } = useContext(AuthContext);
@@ -63,6 +64,9 @@ const AddService = () => {
     };
     return (
         <div className="card bg-base-100 w-full max-w-2xl shrink-0 shadow-2xl mx-auto my-10">
+            <Helmet>
+                <title>Servicia|Add Service</title>
+            </Helmet>
             <h1 className="text-3xl font-bold text-center py-4 text-[#357ef0]">
                 Add a service!
             </h1>

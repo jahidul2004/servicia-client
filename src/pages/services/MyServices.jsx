@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/authContext/AuthContext";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyServices = () => {
     const { user } = useContext(AuthContext);
@@ -131,6 +132,9 @@ const MyServices = () => {
 
     return (
         <div className="mx-4">
+            <Helmet>
+                <title>Servicia|My Services</title>
+            </Helmet>
             <div className="flex flex-col items-center py-10">
                 <h1 className="text-3xl font-bold text-center mb-4 text-[#357ef0]">
                     My Services!

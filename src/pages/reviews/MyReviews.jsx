@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/authContext/AuthContext";
 import Swal from "sweetalert2";
 import StarRatings from "react-star-ratings";
+import { Helmet } from "react-helmet";
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -109,6 +110,9 @@ const MyReviews = () => {
 
     return (
         <div className="mx-4">
+            <Helmet>
+                <title>Servicia|My Reviews</title>
+            </Helmet>
             <h1 className="text-3xl font-bold text-center py-10 text-[#357ef0]">
                 My Reviews!
                 <br />
