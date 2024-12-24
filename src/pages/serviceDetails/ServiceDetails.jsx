@@ -186,12 +186,12 @@ const ServiceDetails = () => {
 
             <div className="bg-[#357df017] rounded-lg p-4 mt-4">
                 <div className="flex justify-between items-center">
-                    <h1 className="text-2xl font-bold">
+                    <h1 className="text-xl md:text-2xl font-bold">
                         Reviews of this service
                     </h1>
                     <div className="bg-[#357ef0] text-white p-2 rounded-lg">
-                        <h1 className="text-xl font-bold">
-                            Total Review Count:{" "}
+                        <h1 className="md:text-xl font-bold">
+                            Review Count:{" "}
                             {reviews.length === 0 ? 0 : reviews.length}
                         </h1>
                     </div>
