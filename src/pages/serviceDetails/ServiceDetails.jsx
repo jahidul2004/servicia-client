@@ -181,7 +181,15 @@ const ServiceDetails = () => {
             </div>
 
             <div className="bg-[#5af03517] rounded-lg p-4 mt-4">
-                <h1 className="text-2xl font-bold">Reviews of this service</h1>
+                <div className="flex justify-between items-center">
+                    <h1 className="text-2xl font-bold">
+                        Reviews of this service
+                    </h1>
+                    <h1 className="text-xl font-bold">
+                        Total Review Count:{" "}
+                        {reviews.length === 0 ? 0 : reviews.length}
+                    </h1>
+                </div>
                 <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
                     {reviews.map((review) => (
                         <ReviewsCard
