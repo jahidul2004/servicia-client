@@ -1,3 +1,4 @@
+import FeaturedService from "../featuredService/FeaturedService";
 import Banner from "./Banner";
 
 const Home = () => {
@@ -6,6 +7,10 @@ const Home = () => {
             {/* Banner start */}
             <Banner></Banner>
             {/* Banner end */}
+
+            {/* Featured services */}
+            <FeaturedService></FeaturedService>
+            {/* Featured services end */}
         </div>
     );
 };
