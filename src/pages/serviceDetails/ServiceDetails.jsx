@@ -51,6 +51,7 @@ const ServiceDetails = () => {
         const name = user?.displayName;
         const photoURL = user?.photoURL;
         const id = data._id;
+        const postedDate = new Date().toLocaleDateString();
 
         const newReview = {
             id,
@@ -59,6 +60,7 @@ const ServiceDetails = () => {
             photoURL,
             rating,
             review,
+            postedDate,
         };
 
         axios
@@ -197,6 +199,7 @@ const ServiceDetails = () => {
                             photoURL={review.photoURL}
                             reviewText={review.review}
                             rating={review.rating}
+                            postedDate={review.postedDate}
                             key={review._id}
                         ></ReviewsCard>
                     ))}
