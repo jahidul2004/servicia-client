@@ -1,7 +1,11 @@
 import axios from "axios";
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import AuthContext from "../../context/authContext/AuthContext";
 
 const AddService = () => {
+    const { user } = useContext(AuthContext);
+
     const handleAddService = (event) => {
         event.preventDefault();
 
@@ -14,6 +18,7 @@ const AddService = () => {
         const category = form.category.value;
         const price = form.price.value;
         const description = form.description.value;
+        const serviceCreator = user.email;
 
         const newService = {
             serviceImage,
@@ -23,6 +28,7 @@ const AddService = () => {
             category,
             price,
             description,
+            serviceCreator,
         };
 
         axios
