@@ -96,7 +96,7 @@ const ServiceDetails = () => {
     return (
         <div className="mx-4 p-4 rounded-lg">
             <div className="flex flex-col md:flex-row gap-4">
-                <div className="md:w-1/2 w-full h-[480px] rounded-lg">
+                <div className="md:w-1/2 w-full h-[480px] rounded-lg bg-[#dbf1fc] p-4">
                     <img
                         className="w-full h-full rounded-lg object-cover"
                         src={serviceImage}
