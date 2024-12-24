@@ -87,6 +87,48 @@ const MyServices = () => {
             });
     };
 
+    const handleDeleteService = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it!",
+            cancelButtonText: "No, keep it",
+            customClass: {
+                confirmButton: "btn btn-error text-white",
+                cancelButton: "btn bg-[#357ef0] text-white",
+            },
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios
+                    .delete(`http://localhost:3000/deleteService/${id}`)
+                    .then((res) => {
+                        console.log(res.data);
+                        setMyServices((prevServices) =>
+                            prevServices.filter((service) => service._id !== id)
+                        );
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your service has been deleted.",
+                            icon: "success",
+                            customClass: {
+                                confirmButton: "btn bg-[#357ef0] text-white",
+                            },
+                        });
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        Swal.fire({
+                            title: "Error!",
+                            text: "Failed to delete the service.",
+                            icon: "error",
+                        });
+                    });
+            }
+        });
+    };
+
     return (
         <div className="mx-4">
             <div className="flex flex-col items-center py-10">
@@ -157,7 +199,7 @@ const MyServices = () => {
 
             {/* Modal */}
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <div className="max-h-[100vh] fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div className="bg-white rounded-lg p-6 w-[90%] md:w-[600px]">
                         <h2 className="text-2xl font-bold mb-4">
                             Update Service
@@ -268,7 +310,7 @@ const MyServices = () => {
                                 />
                             </div>
 
-                            <div className="mb-4">
+                            <div className="md:col-span-2">
                                 <label className="block font-semibold mb-1">
                                     Description
                                 </label>
@@ -283,7 +325,7 @@ const MyServices = () => {
                                     className="textarea textarea-bordered w-full"
                                 ></textarea>
                             </div>
-                            <div className="flex justify-end gap-2">
+                            <div className="flex gap-2">
                                 <button
                                     type="button"
                                     onClick={handleModalClose}
