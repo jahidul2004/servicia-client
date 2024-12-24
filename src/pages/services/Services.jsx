@@ -1,11 +1,30 @@
 import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 import FeaturedServiceCard from "../featuredService/FeaturedServiceCard";
 import { Helmet } from "react-helmet";
 
 const Services = () => {
     const data = useLoaderData();
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredServices, setFilteredServices] = useState(data);
 
-    console.log(data);
+    const handleSearchChange = (event) => {
+        const term = event.target.value;
+        setSearchTerm(term);
+
+        const filteredData = data.filter(
+            (service) =>
+                service.serviceTitle
+                    .toLowerCase()
+                    .includes(term.toLowerCase()) ||
+                service.description
+                    .toLowerCase()
+                    .includes(term.toLowerCase()) ||
+                service.category.toLowerCase().includes(term.toLowerCase())
+        );
+        setFilteredServices(filteredData);
+    };
+
     return (
         <div className="mx-4">
             <Helmet>
@@ -17,7 +36,13 @@ const Services = () => {
                 </h1>
 
                 <label className="input input-bordered border-[#357ef0] flex items-center gap-2">
-                    <input type="text" className="grow" placeholder="Search" />
+                    <input
+                        type="text"
+                        className="grow"
+                        placeholder="Title, description, category"
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -34,7 +59,7 @@ const Services = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {data.map((service) => (
+                {filteredServices.map((service) => (
                     <FeaturedServiceCard
                         id={service._id}
                         price={service.price}
