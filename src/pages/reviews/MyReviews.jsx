@@ -2,14 +2,14 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/authContext/AuthContext";
 import Swal from "sweetalert2";
-import StarRatings from "react-star-ratings"; // Import StarRatings
+import StarRatings from "react-star-ratings";
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState([]);
     const [selectedReview, setSelectedReview] = useState(null);
     const [editedReview, setEditedReview] = useState("");
-    const [editedRating, setEditedRating] = useState(0); // Rating state
+    const [editedRating, setEditedRating] = useState(0);
 
     useEffect(() => {
         axios
