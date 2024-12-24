@@ -7,6 +7,8 @@ const MyServices = () => {
     const { user } = useContext(AuthContext);
     const [myServices, setMyServices] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState("");
+    const [selectedService, setSelectedService] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         axios
@@ -24,40 +26,54 @@ const MyServices = () => {
         service.serviceTitle.toLowerCase().includes(searchKeyword.toLowerCase())
     );
 
-    const handleDeleteService = (id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios
-                    .delete(`http://localhost:3000/deleteService/${id}`)
-                    .then((res) => {
-                        console.log(res.data);
-                        setMyServices(
-                            myServices.filter((service) => service._id !== id)
-                        );
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your service has been deleted.",
-                            icon: "success",
-                        });
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        Swal.fire({
-                            title: "Error!",
-                            text: err.message,
-                            icon: "error",
-                        });
-                    });
-            }
-        });
+    const handleUpdateService = (service) => {
+        setSelectedService(service);
+        setIsModalOpen(true);
+    };
+
+    const handleModalClose = () => {
+        setSelectedService(null);
+        setIsModalOpen(false);
+    };
+
+    const handleUpdateSubmit = (e) => {
+        e.preventDefault();
+        const { _id, serviceTitle, description, price } = selectedService;
+
+        axios
+            .put(`http://localhost:3000/updateService/${_id}`, {
+                serviceTitle,
+                description,
+                price,
+            })
+            .then((res) => {
+                console.log(res.data);
+                setMyServices((prevServices) =>
+                    prevServices.map((service) =>
+                        service._id === _id
+                            ? { ...service, ...selectedService }
+                            : service
+                    )
+                );
+                Swal.fire({
+                    title: "Success!",
+                    text: "Service updated successfully!",
+                    icon: "success",
+                    confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "btn bg-[#357ef0] text-white",
+                    },
+                });
+                handleModalClose();
+            })
+            .catch((err) => {
+                console.log(err);
+                Swal.fire({
+                    title: "Error!",
+                    text: "Failed to update the service.",
+                    icon: "error",
+                });
+            });
     };
 
     return (
@@ -111,13 +127,14 @@ const MyServices = () => {
                             </p>
                         </div>
                         <div className="flex gap-2 mt-4">
-                            <button className="btn bg-[#357ef0] text-white">
+                            <button
+                                onClick={() => handleUpdateService(service)}
+                                className="btn bg-[#357ef0] text-white"
+                            >
                                 Update Service
                             </button>
                             <button
-                                onClick={() => {
-                                    handleDeleteService(service._id);
-                                }}
+                                onClick={() => handleDeleteService(service._id)}
                                 className="btn bg-[#357ef0] text-white"
                             >
                                 Delete Service
@@ -126,6 +143,81 @@ const MyServices = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Modal */}
+            {isModalOpen && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div className="bg-white rounded-lg p-6 w-[90%] md:w-[600px]">
+                        <h2 className="text-2xl font-bold mb-4">
+                            Update Service
+                        </h2>
+                        <form onSubmit={handleUpdateSubmit}>
+                            <div className="mb-4">
+                                <label className="block font-semibold mb-1">
+                                    Service Title
+                                </label>
+                                <input
+                                    type="text"
+                                    value={selectedService.serviceTitle}
+                                    onChange={(e) =>
+                                        setSelectedService({
+                                            ...selectedService,
+                                            serviceTitle: e.target.value,
+                                        })
+                                    }
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label className="block font-semibold mb-1">
+                                    Description
+                                </label>
+                                <textarea
+                                    value={selectedService.description}
+                                    onChange={(e) =>
+                                        setSelectedService({
+                                            ...selectedService,
+                                            description: e.target.value,
+                                        })
+                                    }
+                                    className="textarea textarea-bordered w-full"
+                                ></textarea>
+                            </div>
+                            <div className="mb-4">
+                                <label className="block font-semibold mb-1">
+                                    Price
+                                </label>
+                                <input
+                                    type="number"
+                                    value={selectedService.price}
+                                    onChange={(e) =>
+                                        setSelectedService({
+                                            ...selectedService,
+                                            price: e.target.value,
+                                        })
+                                    }
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+                            <div className="flex justify-end gap-2">
+                                <button
+                                    type="button"
+                                    onClick={handleModalClose}
+                                    className="btn btn-error text-white"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    type="submit"
+                                    className="btn bg-[#357ef0] text-white"
+                                >
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
