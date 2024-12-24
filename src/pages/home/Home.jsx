@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import FeaturedService from "../featuredService/FeaturedService";
 import Banner from "./Banner";
+import Partners from "../partners/Partners";
 
 const Home = () => {
     return (
@@ -15,6 +16,10 @@ const Home = () => {
             {/* Featured services */}
             <FeaturedService></FeaturedService>
             {/* Featured services end */}
+
+            {/* Partners section start */}
+            <Partners></Partners>
+            {/* Partners section end */}
         </div>
     );
 };
