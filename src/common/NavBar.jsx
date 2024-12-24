@@ -104,7 +104,7 @@ const NavBar = () => {
                     </li>
                     <li>
                         <NavLink
-                            to="/myReviews"
+                            to={`/myReviews/${user.email}`}
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-[#357ef0] text-white"

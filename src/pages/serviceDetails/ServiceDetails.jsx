@@ -9,7 +9,6 @@ import AuthContext from "../../context/authContext/AuthContext";
 import ReviewsCard from "../reviews/ReviewsCard";
 import Swal from "sweetalert2";
 import { GrServicePlay } from "react-icons/gr";
-import { IoDocumentTextOutline } from "react-icons/io5";
 import { LuBadgeDollarSign } from "react-icons/lu";
 
 const ServiceDetails = () => {
@@ -61,6 +60,7 @@ const ServiceDetails = () => {
             rating,
             review,
             postedDate,
+            serviceTitle,
         };
 
         axios

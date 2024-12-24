@@ -11,6 +11,7 @@ import ServiceDetails from "../pages/serviceDetails/ServiceDetails";
 import axios from "axios";
 import Services from "../pages/services/Services";
 import MyServices from "../pages/services/MyServices";
+import MyReviews from "../pages/reviews/MyReviews";
 
 const router = createBrowserRouter([
     {
@@ -71,9 +72,21 @@ const router = createBrowserRouter([
                 },
             },
             {
-                path:"/myServices/:email",
-                element: <MyServices></MyServices>
-            }
+                path: "/myServices/:email",
+                element: (
+                    <PrivateRoute>
+                        <MyServices></MyServices>
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "/myReviews/:email",
+                element: (
+                    <PrivateRoute>
+                        <MyReviews></MyReviews>
+                    </PrivateRoute>
+                ),
+            },
         ],
     },
 ]);
