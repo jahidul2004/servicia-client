@@ -101,34 +101,32 @@ const ServiceDetails = () => {
             <Helmet>
                 <title>Servicia | {serviceTitle}</title>
             </Helmet>
-            <div className="flex flex-col md:flex-row gap-4">
-                <div className="md:w-1/2 w-full h-[480px] rounded-lg bg-[#dbf1fc] p-4">
+            <div className="gap-4">
+                <div className="h-[480px] rounded-lg mb-5">
                     <img
                         className="w-full h-full rounded-lg object-cover"
                         src={serviceImage}
                         alt=""
                     />
                 </div>
-                <div className="md:w-1/2 w-full">
+                <div>
                     <div className="rounded-lg flex flex-col md:flex-row gap-2">
-                        <div className="bg-[#357df015] rounded-lg p-4 w-full md:w-[60%]">
+                        <div className="bg-[#357df017] rounded-lg p-4 w-full md:w-[60%]">
                             <p className="font-bold flex items-center gap-2">
                                 <TbCategory />
                                 Category: {category}
                             </p>
-                            <h1 className="text-3xl font-bold flex items-center gap-2">
+                            <h1 className="text-3xl text-[#357ef0] font-bold flex items-center gap-2">
                                 <GrServicePlay />
                                 {serviceTitle}
                             </h1>
                             <p className="font-semibold py-2">{description}</p>
-                            <p className="font-bold flex items-center gap-2">
+                            <p className="font-bold text-xl text-[#357ef0] flex items-center gap-2">
                                 <LuBadgeDollarSign />
                                 Price: {price} $
                             </p>
-                        </div>
-                        <div className="bg-[#f0ce3538] rounded-lg p-4 w-full md:w-[40%]">
-                            <h1 className="text-xl font-bold mb-2">
-                                Company Information
+                            <h1 className="font-bold text-xl mt-3 mb-1 text-[#357ef0]">
+                                Company Info
                             </h1>
                             <h1 className="text-xl font-bold flex items-center gap-2">
                                 <RiHomeOfficeLine />
@@ -145,48 +143,48 @@ const ServiceDetails = () => {
                                 </Link>
                             </p>
                         </div>
-                    </div>
-                    <div className="bg-[#35b5f02d] rounded-lg p-4 mt-4">
-                        <form
-                            onSubmit={handleReview}
-                            className="flex flex-col gap-4"
-                        >
-                            <h1 className="text-xl font-bold flex items-center gap-2">
-                                <FaStar />
-                                Review for this service
-                            </h1>
-                            <div>
-                                <StarRatings
-                                    rating={rating}
-                                    starRatedColor="#357ef0"
-                                    changeRating={changeRating}
-                                    numberOfStars={5}
-                                    name="rating"
-                                    starDimension="30px"
-                                    starSpacing="5px"
-                                    starEmptyColor="#f6cb69"
-                                />
-                            </div>
-                            <textarea
-                                value={review}
-                                onChange={(e) => setReview(e.target.value)}
-                                className="textarea textarea-bordered border-2 border-[#357ef0] bg-transparent"
-                                name="review"
-                                placeholder="Write a review"
-                                required
-                            ></textarea>
-                            <button
-                                type="submit"
-                                className="btn bg-[#357ef0] text-white border-none"
+                        <div className="w-full md:w-[40%] bg-[#357df017] rounded-lg p-4">
+                            <form
+                                onSubmit={handleReview}
+                                className="flex flex-col gap-4"
                             >
-                                Submit
-                            </button>
-                        </form>
+                                <h1 className="text-xl font-bold flex items-center gap-2">
+                                    <FaStar />
+                                    Review for this service
+                                </h1>
+                                <div>
+                                    <StarRatings
+                                        rating={rating}
+                                        starRatedColor="#357ef0"
+                                        changeRating={changeRating}
+                                        numberOfStars={5}
+                                        name="rating"
+                                        starDimension="30px"
+                                        starSpacing="5px"
+                                        starEmptyColor="#f6cb69"
+                                    />
+                                </div>
+                                <textarea
+                                    value={review}
+                                    onChange={(e) => setReview(e.target.value)}
+                                    className="textarea bg-[#357df017]"
+                                    name="review"
+                                    placeholder="Write a review"
+                                    required
+                                ></textarea>
+                                <button
+                                    type="submit"
+                                    className="btn bg-[#357ef0] text-white border-none"
+                                >
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div className="bg-[#5af03517] rounded-lg p-4 mt-4">
+            <div className="bg-[#357df017] rounded-lg p-4 mt-4">
                 <div className="flex justify-between items-center">
                     <h1 className="text-2xl font-bold">
                         Reviews of this service
