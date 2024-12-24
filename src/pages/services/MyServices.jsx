@@ -134,6 +134,8 @@ const MyServices = () => {
             <div className="flex flex-col items-center py-10">
                 <h1 className="text-3xl font-bold text-center mb-4 text-[#357ef0]">
                     My Services!
+                    <br />
+                    --------------------------
                 </h1>
                 <label className="input input-bordered border-[#357ef0] flex items-center gap-2">
                     <input
