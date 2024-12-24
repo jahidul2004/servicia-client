@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/authContext/AuthContext";
+import Swal from "sweetalert2";
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -14,6 +15,38 @@ const MyReviews = () => {
                 setMyReviews(res.data);
             });
     }, []);
+
+    const handleDeleteReview = (id) => {
+        axios
+            .delete(`http://localhost:3000/deleteReview/${user.email}/${id}`)
+            .then((res) => {
+                console.log(res.data);
+                setMyReviews((prevReviews) =>
+                    prevReviews.filter((review) => review.id !== id)
+                );
+                Swal.fire({
+                    title: "Success!",
+                    text: "Review deleted successfully",
+                    icon: "success",
+                    confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "bg-[#357ef0] text-white",
+                    },
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                Swal.fire({
+                    title: "Error!",
+                    text: error.message,
+                    icon: "error",
+                    confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "bg-error text-white",
+                    },
+                });
+            });
+    };
     return (
         <div className="mx-4">
             <h1 className="text-3xl font-bold text-center py-10">
@@ -35,7 +68,12 @@ const MyReviews = () => {
                             <button className="btn bg-[#357ef0] text-white">
                                 Edit Review
                             </button>
-                            <button className="btn btn-error text-white">
+                            <button
+                                onClick={() => {
+                                    handleDeleteReview(review.id);
+                                }}
+                                className="btn btn-error text-white"
+                            >
                                 Delete Review
                             </button>
                         </div>
