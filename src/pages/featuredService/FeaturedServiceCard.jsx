@@ -8,8 +8,8 @@ const FeaturedServiceCard = ({
     id,
 }) => {
     return (
-        <div className="border-2 rounded-lg p-4">
-            <div className="bg-[#f1f1f1] p-2 rounded-lg h-[250px]">
+        <div className="bg-[#357df017] rounded-lg p-4">
+            <div className="rounded-lg h-[250px]">
                 <img
                     className="rounded-lg w-full h-full object-cover"
                     src={serviceImage}
@@ -17,7 +17,9 @@ const FeaturedServiceCard = ({
                 />
             </div>
             <div className="mt-4">
-                <h1 className="text-2xl font-bold text-[#357ef0]">{serviceTitle}</h1>
+                <h1 className="text-2xl font-bold text-[#357ef0]">
+                    {serviceTitle}
+                </h1>
                 <p className="font-semibold my-2">{description}</p>
                 <p className="font-bold">Price: {price} $</p>
                 <Link
