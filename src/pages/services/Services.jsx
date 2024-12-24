@@ -6,22 +6,39 @@ import { Helmet } from "react-helmet";
 const Services = () => {
     const data = useLoaderData();
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
     const [filteredServices, setFilteredServices] = useState(data);
 
     const handleSearchChange = (event) => {
         const term = event.target.value;
         setSearchTerm(term);
+        filterServices(term, selectedCategory);
+    };
 
-        const filteredData = data.filter(
-            (service) =>
+    const handleCategoryChange = (event) => {
+        const category = event.target.value;
+        setSelectedCategory(category);
+        filterServices(searchTerm, category);
+    };
+
+    const filterServices = (term, category) => {
+        const filteredData = data.filter((service) => {
+            const matchesTerm =
                 service.serviceTitle
                     .toLowerCase()
                     .includes(term.toLowerCase()) ||
                 service.description
                     .toLowerCase()
                     .includes(term.toLowerCase()) ||
-                service.category.toLowerCase().includes(term.toLowerCase())
-        );
+                service.category.toLowerCase().includes(term.toLowerCase());
+
+            const matchesCategory = category
+                ? service.category.toLowerCase() === category.toLowerCase()
+                : true;
+
+            return matchesTerm && matchesCategory;
+        });
+
         setFilteredServices(filteredData);
     };
 
@@ -35,27 +52,41 @@ const Services = () => {
                     All Services <br /> --------------------------
                 </h1>
 
-                <label className="input input-bordered border-[#357ef0] flex items-center gap-2">
-                    <input
-                        type="text"
-                        className="grow"
-                        placeholder="Title, description, category"
-                        value={searchTerm}
-                        onChange={handleSearchChange}
-                    />
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 16 16"
-                        fill="currentColor"
-                        className="h-4 w-4 opacity-70"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                            clipRule="evenodd"
+                <div className="flex gap-4">
+                    <label className="input input-bordered border-[#357ef0] flex items-center gap-2">
+                        <input
+                            type="text"
+                            className="grow"
+                            placeholder="Search by title, description, or category"
+                            value={searchTerm}
+                            onChange={handleSearchChange}
                         />
-                    </svg>
-                </label>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 16 16"
+                            fill="currentColor"
+                            className="h-4 w-4 opacity-70"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    </label>
+
+                    <select
+                        className="select select-bordered"
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                    >
+                        <option value="">Select Category</option>
+                        <option value="IT">IT</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
