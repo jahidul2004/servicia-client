@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Partners = () => {
     return (
-        <div className="mx-4">
+        <div className="mx-4 my-10 mb-10">
             <h1 className="text-3xl md:text-4xl font-bold text-center py-10 text-[#357ef0]">
                 Meet Our Partners <br />
                 ---------------------------
@@ -22,17 +22,17 @@ const Partners = () => {
                         alt=""
                     />
                 </Link>
-                <Link target="_blank" to={"https://akijmotors.com/"}>
+                <Link target="_blank" to={"https://daraz.com/"}>
                     <img
                         className="w-full hover:filter hover:grayscale cursor-pointer"
-                        src="https://i.ibb.co.com/QfKwZp4/download.png"
+                        src="https://i.ibb.co.com/TLvpTLb/download.png"
                         alt=""
                     />
                 </Link>
-                <Link target="_blank" to={"https://www.bsti.gov.bd/"}>
+                <Link target="_blank" to={"https://waltonbd.com/"}>
                     <img
                         className="w-full hover:filter hover:grayscale cursor-pointer"
-                        src="https://i.ibb.co.com/p0NDgY6/download.jpg"
+                        src="https://i.ibb.co.com/sHRnggg/audd4z9mrhsgjf7o7wi7.webp"
                         alt=""
                     />
                 </Link>
