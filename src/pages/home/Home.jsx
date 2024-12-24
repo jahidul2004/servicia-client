@@ -3,6 +3,7 @@ import FeaturedService from "../featuredService/FeaturedService";
 import Banner from "./Banner";
 import Partners from "../partners/Partners";
 import HomeStat from "../homeStat/HomeStat";
+import LatestBlog from "../latestBlog/LatestBlog";
 
 const Home = () => {
     return (
@@ -25,6 +26,10 @@ const Home = () => {
             {/* Home stat */}
             <HomeStat></HomeStat>
             {/* Home stat end */}
+
+            {/* Latest Blog section start */}
+            <LatestBlog></LatestBlog>
+            {/* Latest Blog section end */}
         </div>
     );
 };
