@@ -76,7 +76,7 @@ const Services = () => {
                     </label>
 
                     <select
-                        className="select select-bordered"
+                        className="select select-bordered border-[#357ef0]"
                         value={selectedCategory}
                         onChange={handleCategoryChange}
                     >
