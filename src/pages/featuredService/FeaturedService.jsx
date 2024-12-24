@@ -27,6 +27,7 @@ const FeaturedService = () => {
                         serviceTitle={service.serviceTitle}
                         description={service.description}
                         price={service.price}
+                        id={service._id}
                     ></FeaturedServiceCard>
                 ))}
             </div>

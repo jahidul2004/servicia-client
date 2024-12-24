@@ -1,8 +1,11 @@
+import { Link } from "react-router-dom";
+
 const FeaturedServiceCard = ({
     serviceImage,
     serviceTitle,
     description,
     price,
+    id,
 }) => {
     return (
         <div className="border-2 rounded-lg p-4">
@@ -17,9 +20,12 @@ const FeaturedServiceCard = ({
                 <h1 className="text-2xl font-bold">{serviceTitle}</h1>
                 <p className="font-semibold my-2">{description}</p>
                 <p className="font-bold">Price: {price} $</p>
-                <button className="btn bg-[#357ef0] text-white mt-4">
+                <Link
+                    to={`/serviceDetails/${id}`}
+                    className="btn bg-[#357ef0] text-white mt-4"
+                >
                     See Details
-                </button>
+                </Link>
             </div>
         </div>
     );
