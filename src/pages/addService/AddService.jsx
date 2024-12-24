@@ -130,13 +130,17 @@ const AddService = () => {
                     <label className="label">
                         <span className="label-text">Category</span>
                     </label>
-                    <input
+                    <select
                         name="category"
-                        type="text"
-                        placeholder="Enter category"
-                        className="input input-bordered"
+                        className="select select-bordered"
                         required
-                    />
+                    >
+                        <option value="">Select Category</option>
+                        <option value="IT">IT</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Others">Others</option>
+                    </select>
                 </div>
 
                 <div className="form-control">
