@@ -7,6 +7,8 @@ import Home from "../pages/home/Home";
 import PrivateRoute from "./PrivateRoute";
 import AddService from "../pages/addService/AddService";
 import SecureLoginRegister from "./SecureLoginRegister";
+import ServiceDetails from "../pages/serviceDetails/ServiceDetails";
+import axios from "axios";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +43,16 @@ const router = createBrowserRouter([
                         <AddService></AddService>
                     </PrivateRoute>
                 ),
+            },
+            {
+                path: "serviceDetails/:id",
+                element: <ServiceDetails></ServiceDetails>,
+                loader: async ({ params }) => {
+                    const res = await axios.get(
+                        `http://localhost:3000/service/${params.id}`
+                    );
+                    return res.data;
+                },
             },
         ],
     },
