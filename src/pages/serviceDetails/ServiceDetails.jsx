@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { RiHomeOfficeLine } from "react-icons/ri";
 import { TbWorldWww } from "react-icons/tb";
 import { useLoaderData } from "react-router-dom";
 import StarRatings from "react-star-ratings";
+import AuthContext from "../../context/authContext/AuthContext";
 
 const ServiceDetails = () => {
     const data = useLoaderData();
+
+    const { user } = useContext(AuthContext);
+
     const {
         serviceImage,
         serviceTitle,
@@ -28,14 +33,29 @@ const ServiceDetails = () => {
     // Handle review submission
     const handleReview = (e) => {
         e.preventDefault();
-        console.log("Review Submitted");
-        console.log("Rating:", rating);
-        console.log("Review Text:", review);
+
+        const email = user?.email;
+        const name = user?.displayName;
+        const photoURL = user?.photoURL;
+        const id = data._id;
+
+        const newReview = {
+            id,
+            email,
+            name,
+            photoURL,
+            rating,
+            review,
+        };
+
+        axios.post("http://localhost:3000/addReview", newReview).then((res) => {
+            console.log(res.data);
+        });
     };
 
     return (
-        <div className="mx-4">
-            <div className="border-2 flex flex-col md:flex-row gap-4 p-4 rounded-lg">
+        <div className="mx-4 border-2 p-4 rounded-lg">
+            <div className="flex flex-col md:flex-row gap-4">
                 <div className="md:w-1/2 w-full h-[480px] border-2 rounded-lg">
                     <img
                         className="w-full h-full rounded-lg object-cover p-2"
@@ -100,6 +120,11 @@ const ServiceDetails = () => {
                         </form>
                     </div>
                 </div>
+            </div>
+
+            <div className="border-2 rounded-lg p-4 mt-4">
+                <h1 className="text-2xl font-bold">Reviews of this service</h1>
+                <div></div>
             </div>
         </div>
     );
