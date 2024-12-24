@@ -43,7 +43,7 @@ const Services = () => {
     };
 
     return (
-        <div className="mx-4">
+        <div className="mx-4 my-10">
             <Helmet>
                 <title>Servicia | Services</title>
             </Helmet>

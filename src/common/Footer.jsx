@@ -2,7 +2,7 @@ import { FaServicestack } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-10">
+        <footer className="footer bg-[#357df017] footer-center p-10">
             <aside>
                 <FaServicestack className="text-5xl text-[#357ef0]" />
                 <p className="font-bold text-lg">
