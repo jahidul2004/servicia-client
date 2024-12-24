@@ -5,6 +5,7 @@ import axios from "axios";
 const MyServices = () => {
     const { user } = useContext(AuthContext);
     const [myServices, setMyServices] = useState([]);
+    const [searchKeyword, setSearchKeyword] = useState("");
 
     useEffect(() => {
         axios
@@ -15,15 +16,27 @@ const MyServices = () => {
             .catch((err) => {
                 console.log(err);
             });
-    }, []);
+    }, [user?.email]);
+
+    // Filter services based on the search keyword
+    const filteredServices = myServices.filter((service) =>
+        service.serviceTitle.toLowerCase().includes(searchKeyword.toLowerCase())
+    );
+
     return (
         <div className="mx-4">
             <div className="flex flex-col items-center py-10">
                 <h1 className="text-3xl font-bold text-center mb-4 text-[#357ef0]">
-                    My services!
+                    My Services!
                 </h1>
                 <label className="input input-bordered border-[#357ef0] flex items-center gap-2">
-                    <input type="text" className="grow" placeholder="Search keyword" />
+                    <input
+                        type="text"
+                        className="grow"
+                        placeholder="Search keyword"
+                        value={searchKeyword}
+                        onChange={(e) => setSearchKeyword(e.target.value)}
+                    />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
@@ -40,7 +53,7 @@ const MyServices = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {myServices.map((service) => (
+                {filteredServices.map((service) => (
                     <div className="border-2 rounded-lg p-4" key={service._id}>
                         <div className="h-[300px]">
                             <img
@@ -53,12 +66,20 @@ const MyServices = () => {
                             <h1 className="text-2xl font-bold text-[#357ef0]">
                                 {service.serviceTitle}
                             </h1>
-                            <p className="py-2 font-semibold">{service.description}</p>
-                            <p className="font-bold text-[#357ef0]">Price: {service.price}</p>
+                            <p className="py-2 font-semibold">
+                                {service.description}
+                            </p>
+                            <p className="font-bold text-[#357ef0]">
+                                Price: {service.price}
+                            </p>
                         </div>
                         <div className="flex gap-2 mt-4">
-                            <button className="btn bg-[#357ef0] text-white">Update Service</button>
-                            <button className="btn bg-[#357ef0] text-white">Delete Service</button>
+                            <button className="btn bg-[#357ef0] text-white">
+                                Update Service
+                            </button>
+                            <button className="btn bg-[#357ef0] text-white">
+                                Delete Service
+                            </button>
                         </div>
                     </div>
                 ))}
