@@ -52,15 +52,21 @@ const MyServices = () => {
         } = selectedService;
 
         axios
-            .put(`http://localhost:3000/updateService/${_id}`, {
-                serviceTitle,
-                description,
-                price,
-                category,
-                companyName,
-                websiteURL,
-                serviceImage,
-            })
+            .put(
+                `http://localhost:3000/updateService/${_id}`,
+                {
+                    serviceTitle,
+                    description,
+                    price,
+                    category,
+                    companyName,
+                    websiteURL,
+                    serviceImage,
+                },
+                {
+                    withCredentials: true,
+                }
+            )
             .then((res) => {
                 console.log(res.data);
                 setMyServices((prevServices) =>
