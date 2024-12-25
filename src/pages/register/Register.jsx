@@ -156,21 +156,17 @@ const Register = () => {
                                                     "bg-[#357ef0] text-white",
                                             },
                                         });
-
-                                        axios
-                                            .post(
-                                                "http://localhost:3000/addUser",
-                                                {
-                                                    email: user.email,
-                                                    name: user.displayName,
-                                                    photoURL: user.photoURL,
-                                                    password: "google",
-                                                }
-                                            )
-                                            .then((res) => {
-                                                console.log(res.data);
-                                            });
                                     }
+                                    axios
+                                        .post("http://localhost:3000/addUser", {
+                                            email: user.user.email,
+                                            name: user.user.displayName,
+                                            photoURL: user.user.photoURL,
+                                            password: "google",
+                                        })
+                                        .then((res) => {
+                                            console.log(res.data);
+                                        });
                                 })
                                 .catch((error) => {
                                     console.log(error);
