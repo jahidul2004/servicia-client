@@ -48,6 +48,7 @@ const MyServices = () => {
             companyName,
             websiteURL,
             serviceImage,
+            addedDate,
         } = selectedService;
 
         axios
@@ -166,43 +167,72 @@ const MyServices = () => {
                 </label>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {filteredServices.map((service) => (
-                    <div className="bg-[#357df017] rounded-lg p-4" key={service._id}>
-                        <div className="h-[300px]">
-                            <img
-                                className="w-full h-full rounded-lg object-cover"
-                                src={service.serviceImage}
-                                alt=""
-                            />
-                        </div>
-                        <div className="mt-2">
-                            <h1 className="text-2xl font-bold text-[#357ef0]">
-                                {service.serviceTitle}
-                            </h1>
-                            <p className="py-2 font-semibold">
-                                {service.description}
-                            </p>
-                            <p className="font-bold text-[#357ef0]">
-                                Price: {service.price}
-                            </p>
-                        </div>
-                        <div className="flex gap-2 mt-4">
-                            <button
-                                onClick={() => handleUpdateService(service)}
-                                className="btn bg-[#357ef0] text-white"
-                            >
-                                Update Service
-                            </button>
-                            <button
-                                onClick={() => handleDeleteService(service._id)}
-                                className="btn bg-[#357ef0] text-white"
-                            >
-                                Delete Service
-                            </button>
-                        </div>
-                    </div>
-                ))}
+            <div>
+                <div className="w-full">
+                    <table className="table w-full">
+                        {/* head */}
+                        <thead>
+                            <tr className="text-xl font-bold">
+                                <th>Service Title</th>
+                                <th>Price</th>
+                                <th>Added Date</th>
+                                <th>Take Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {filteredServices.map((service) => (
+                                <tr>
+                                    <td>
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle h-12 w-12">
+                                                    <img
+                                                        src={
+                                                            service.serviceImage
+                                                        }
+                                                        alt="Avatar Tailwind CSS Component"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="font-bold">
+                                                    {service.serviceTitle}
+                                                </div>
+                                                <div className="text-sm opacity-50">
+                                                    {service.companyName}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span className="badge badge-ghost badge-sm">
+                                            {service.price}$
+                                        </span>
+                                    </td>
+                                    <td>{service.addedDate}</td>
+                                    <th>
+                                        <button
+                                            onClick={() =>
+                                                handleUpdateService(service)
+                                            }
+                                            className="btn bg-[#357ef0] text-white"
+                                        >
+                                            Update Service
+                                        </button>
+                                        <button
+                                            onClick={() =>
+                                                handleDeleteService(service._id)
+                                            }
+                                            className="btn btn-error text-white"
+                                        >
+                                            Delete Service
+                                        </button>
+                                    </th>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             {/* Modal */}
