@@ -32,6 +32,19 @@ const Login = () => {
                     });
                     form.reset();
                 }
+                axios
+                    .post(
+                        "http://localhost:3000/jwt",
+                        {
+                            user: { email: email },
+                        },
+                        {
+                            withCredentials: true,
+                        }
+                    )
+                    .then((res) => {
+                        console.log(res.data);
+                    });
             })
             .catch((error) => {
                 console.log(error);
@@ -127,6 +140,20 @@ const Login = () => {
                                             photoURL: user.user.photoURL,
                                             password: "google",
                                         })
+                                        .then((res) => {
+                                            console.log(res.data);
+                                        });
+
+                                    axios
+                                        .post(
+                                            "http://localhost:3000/jwt",
+                                            {
+                                                user: { email: user.user.email },
+                                            },
+                                            {
+                                                withCredentials: true,
+                                            }
+                                        )
                                         .then((res) => {
                                             console.log(res.data);
                                         });
