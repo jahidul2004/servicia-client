@@ -40,7 +40,7 @@ const Partners = () => {
                         </Link>
                     </div>
                     <div className="h-[150px] w-full">
-                        <h1 className="text-2xl font-bold">
+                        <h1 className="text-2xl font-bold py-2">
                             Bangladesh Computer Samity
                         </h1>
                         <p className="font-semibold">
@@ -63,7 +63,7 @@ const Partners = () => {
                         </Link>
                     </div>
                     <div>
-                        <h1 className="text-2xl font-bold">Daraz BD</h1>
+                        <h1 className="text-2xl font-bold py-2">Daraz BD</h1>
                         <p className="font-semibold">
                             Daraz.com.bd is best online shopping store in
                             Bangladesh that features 10+ million products at
@@ -84,7 +84,7 @@ const Partners = () => {
                         </Link>
                     </div>
                     <div>
-                        <h1 className="text-2xl font-bold">Walton</h1>
+                        <h1 className="text-2xl font-bold py-2">Walton</h1>
                         <p className="font-semibold">
                             Walton Plaza is the largest selling and distribution
                             network for Walton products around the country.
