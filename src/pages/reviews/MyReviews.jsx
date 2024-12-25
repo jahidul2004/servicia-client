@@ -119,18 +119,20 @@ const MyReviews = () => {
                 --------------------------
             </h1>
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="flex flex-col gap-2">
                 {myReviews.map((review) => (
                     <div
                         key={review._id}
-                        className="bg-[#357df017] border-l-8 border-[#357ef0] p-4 my-4"
+                        className="bg-[#357df017] p-8 my-4 flex flex-col md:flex-row gap-4 justify-center items-center"
                     >
-                        <p className="font-semibold">{review.postedDate}</p>
-                        <h3 className="text-xl font-bold">
-                            {review.serviceTitle}
-                        </h3>
-                        <div>
+                        <div className="w-full md:w-1/3">
+                            <p className="font-semibold">{review.postedDate}</p>
+                            <h3 className="text-xl font-bold">
+                                {review.serviceTitle}
+                            </h3>
                             <p className="font-semibold">{review.review}</p>
+                        </div>
+                        <div className="w-full md:w-1/3">
                             <StarRatings
                                 rating={review.rating}
                                 starRatedColor="#357ef0"
@@ -140,7 +142,7 @@ const MyReviews = () => {
                                 starSpacing="5px"
                             />
                         </div>
-                        <div className="flex items-center gap-4 mt-2">
+                        <div className="flex items-center gap-4 mt-2 w-full md:w-1/3">
                             <button
                                 onClick={() => {
                                     setSelectedReview(review);
@@ -162,7 +164,7 @@ const MyReviews = () => {
                 ))}
             </div>
 
-            {/* Modal */}
+            {/* Modal start from here */}
             {selectedReview && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div className="bg-white p-8 rounded-lg w-96">
