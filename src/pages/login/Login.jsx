@@ -3,6 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
     const { loginUser, setUser, googleLogin } = useContext(AuthContext);
@@ -118,6 +119,19 @@ const Login = () => {
                                                     "bg-[#357ef0] text-white",
                                             },
                                         });
+                                        axios
+                                            .post(
+                                                "http://localhost:3000/addUser",
+                                                {
+                                                    email: user.email,
+                                                    name: user.displayName,
+                                                    photoURL: user.photoURL,
+                                                    password: "google",
+                                                }
+                                            )
+                                            .then((res) => {
+                                                console.log(res.data);
+                                            });
                                     }
                                 })
                                 .catch((error) => {

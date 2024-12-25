@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext/AuthContext";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
     const { registerUser, setUser, updateUserProfile, googleLogin } =
@@ -17,8 +18,6 @@ const Register = () => {
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-
-        console.log({ photoURL, name, email, password });
 
         registerUser(email, password)
             .then((user) => {
@@ -39,6 +38,17 @@ const Register = () => {
                         },
                     });
                     form.reset();
+
+                    axios
+                        .post("http://localhost:3000/addUser", {
+                            email,
+                            name,
+                            photoURL,
+                            password,
+                        })
+                        .then((res) => {
+                            console.log(res.data);
+                        });
                 }
             })
             .catch((error) => {
@@ -146,6 +156,20 @@ const Register = () => {
                                                     "bg-[#357ef0] text-white",
                                             },
                                         });
+
+                                        axios
+                                            .post(
+                                                "http://localhost:3000/addUser",
+                                                {
+                                                    email: user.email,
+                                                    name: user.displayName,
+                                                    photoURL: user.photoURL,
+                                                    password: "google",
+                                                }
+                                            )
+                                            .then((res) => {
+                                                console.log(res.data);
+                                            });
                                     }
                                 })
                                 .catch((error) => {
