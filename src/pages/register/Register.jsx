@@ -39,7 +39,7 @@ const Register = () => {
                     form.reset();
 
                     axios
-                        .post("http://localhost:3000/addUser", {
+                        .post("https://servicia-server.vercel.app/addUser", {
                             email,
                             name,
                             photoURL,
@@ -51,7 +51,7 @@ const Register = () => {
 
                     axios
                         .post(
-                            "http://localhost:3000/jwt",
+                            "https://servicia-server.vercel.app/jwt",
                             {
                                 user: { email: email },
                             },
@@ -170,7 +170,7 @@ const Register = () => {
                                         });
                                     }
                                     axios
-                                        .post("http://localhost:3000/addUser", {
+                                        .post("https://servicia-server.vercel.app/addUser", {
                                             email: user.user.email,
                                             name: user.user.displayName,
                                             photoURL: user.user.photoURL,
@@ -182,7 +182,7 @@ const Register = () => {
 
                                     axios
                                         .post(
-                                            "http://localhost:3000/jwt",
+                                            "https://servicia-server.vercel.app/jwt",
                                             {
                                                 user: {
                                                     email: user.user.email,

@@ -35,7 +35,7 @@ const AddService = () => {
         };
 
         axios
-            .post("http://localhost:3000/addService", newService, {
+            .post("https://servicia-server.vercel.app/addService", newService, {
                 withCredentials: true,
             })
             .then((response) => {

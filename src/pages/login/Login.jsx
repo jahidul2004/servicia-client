@@ -33,7 +33,7 @@ const Login = () => {
                 }
                 axios
                     .post(
-                        "http://localhost:3000/jwt",
+                        "https://servicia-server.vercel.app/jwt",
                         {
                             user: { email: email },
                         },
@@ -132,7 +132,7 @@ const Login = () => {
                                         });
                                     }
                                     axios
-                                        .post("http://localhost:3000/addUser", {
+                                        .post("https://servicia-server.vercel.app/addUser", {
                                             email: user.user.email,
                                             name: user.user.displayName,
                                             photoURL: user.user.photoURL,
@@ -144,7 +144,7 @@ const Login = () => {
 
                                     axios
                                         .post(
-                                            "http://localhost:3000/jwt",
+                                            "https://servicia-server.vercel.app/jwt",
                                             {
                                                 user: { email: user.user.email },
                                             },

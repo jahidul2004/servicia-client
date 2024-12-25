@@ -14,7 +14,7 @@ const MyReviews = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/myReviews/${user.email}`, {
+            .get(`https://servicia-server.vercel.app/myReviews/${user.email}`, {
                 withCredentials: true,
             })
             .then((res) => {
@@ -35,7 +35,7 @@ const MyReviews = () => {
             if (result.isConfirmed) {
                 axios
                     .delete(
-                        `http://localhost:3000/deleteReview/${user.email}/${id}`,
+                        `https://servicia-server.vercel.app/deleteReview/${user.email}/${id}`,
                         {
                             withCredentials: true,
                         }
@@ -46,7 +46,7 @@ const MyReviews = () => {
                         // );
                         axios
                             .get(
-                                `http://localhost:3000/myReviews/${user.email}`,
+                                `https://servicia-server.vercel.app/myReviews/${user.email}`,
                                 {
                                     withCredentials: true,
                                 }
@@ -82,7 +82,7 @@ const MyReviews = () => {
     const handleEditReview = () => {
         axios
             .put(
-                `http://localhost:3000/updateReview/${selectedReview._id}`,
+                `https://servicia-server.vercel.app/updateReview/${selectedReview._id}`,
                 {
                     review: editedReview,
                     rating: editedRating,

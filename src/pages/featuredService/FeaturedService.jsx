@@ -7,7 +7,7 @@ const FeaturedService = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/services?limit=6").then((res) => {
+        axios.get("https://servicia-server.vercel.app/services?limit=6").then((res) => {
             setServices(res.data);
         });
     }, []);

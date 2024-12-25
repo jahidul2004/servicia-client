@@ -20,7 +20,7 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/reviews/${data._id}`).then((res) => {
+        axios.get(`https://servicia-server.vercel.app/reviews/${data._id}`).then((res) => {
             setReviews(res.data);
         });
     }, []);
@@ -66,7 +66,7 @@ const ServiceDetails = () => {
         };
 
         axios
-            .post("http://localhost:3000/addReview", newReview, {
+            .post("https://servicia-server.vercel.app/addReview", newReview, {
                 withCredentials: true,
             })
             .then((res) => {

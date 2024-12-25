@@ -13,7 +13,7 @@ const MyServices = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/services/${user?.email}`, {
+            .get(`https://servicia-server.vercel.app/services/${user?.email}`, {
                 withCredentials: true,
             })
             .then((res) => {
@@ -55,7 +55,7 @@ const MyServices = () => {
 
         axios
             .put(
-                `http://localhost:3000/updateService/${_id}`,
+                `https://servicia-server.vercel.app/updateService/${_id}`,
                 {
                     serviceTitle,
                     description,
@@ -113,9 +113,12 @@ const MyServices = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios
-                    .delete(`http://localhost:3000/deleteService/${id}`, {
-                        withCredentials: true,
-                    })
+                    .delete(
+                        `https://servicia-server.vercel.app/deleteService/${id}`,
+                        {
+                            withCredentials: true,
+                        }
+                    )
                     .then((res) => {
                         setMyServices((prevServices) =>
                             prevServices.filter((service) => service._id !== id)

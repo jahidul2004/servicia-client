@@ -56,7 +56,7 @@ const router = createBrowserRouter([
                 ),
                 loader: async ({ params }) => {
                     const res = await axios.get(
-                        `http://localhost:3000/service/${params.id}`
+                        `https://servicia-server.vercel.app/service/${params.id}`
                     );
                     return res.data;
                 },
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
                 element: <Services></Services>,
                 loader: async () => {
                     const res = await axios.get(
-                        "http://localhost:3000/services"
+                        "https://servicia-server.vercel.app/services"
                     );
                     return res.data;
                 },

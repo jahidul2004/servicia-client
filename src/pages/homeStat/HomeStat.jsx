@@ -5,7 +5,7 @@ const HomeStat = () => {
     const [count, setCount] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:3000/countData").then((res) => {
+        axios.get("https://servicia-server.vercel.app/countData").then((res) => {
             setCount(res.data);
         });
     }, []);
