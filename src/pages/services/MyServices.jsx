@@ -106,7 +106,9 @@ const MyServices = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axios
-                    .delete(`http://localhost:3000/deleteService/${id}`)
+                    .delete(`http://localhost:3000/deleteService/${id}`, {
+                        withCredentials: true,
+                    })
                     .then((res) => {
                         console.log(res.data);
                         setMyServices((prevServices) =>
