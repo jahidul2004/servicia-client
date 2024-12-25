@@ -5,7 +5,7 @@ import AuthContext from "../../context/authContext/AuthContext";
 import Swal from "sweetalert2";
 
 const Login = () => {
-    const { loginUser, setUser } = useContext(AuthContext);
+    const { loginUser, setUser, googleLogin } = useContext(AuthContext);
 
     const handleLoginUser = (event) => {
         event.preventDefault();
@@ -102,6 +102,38 @@ const Login = () => {
                 </p>
                 <div>
                     <button
+                        onClick={() => {
+                            googleLogin()
+                                .then((user) => {
+                                    console.log(user);
+                                    setUser(user);
+                                    if (user) {
+                                        Swal.fire({
+                                            title: "Success!",
+                                            text: "Login successfully",
+                                            icon: "success",
+                                            confirmButtonText: "Close",
+                                            customClass: {
+                                                confirmButton:
+                                                    "bg-[#357ef0] text-white",
+                                            },
+                                        });
+                                    }
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                    Swal.fire({
+                                        title: "Error!",
+                                        text: error.message,
+                                        icon: "error",
+                                        confirmButtonText: "Close",
+                                        customClass: {
+                                            confirmButton:
+                                                "bg-error text-white",
+                                        },
+                                    });
+                                });
+                        }}
                         type="button"
                         className="btn w-full bg-[#357ef0] text-white"
                     >
