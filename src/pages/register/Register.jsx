@@ -9,15 +9,46 @@ const Register = () => {
     const { registerUser, setUser, updateUserProfile, googleLogin } =
         useContext(AuthContext);
 
+    const validatePassword = (password) => {
+        const uppercase = /[A-Z]/;
+        const lowercase = /[a-z]/;
+        const minLength = /.{6,}/;
+
+        if (!uppercase.test(password)) {
+            return "Password must contain at least one uppercase letter.";
+        }
+        if (!lowercase.test(password)) {
+            return "Password must contain at least one lowercase letter.";
+        }
+        if (!minLength.test(password)) {
+            return "Password must be at least 6 characters long.";
+        }
+        return null;
+    };
+
     const handleRegister = (event) => {
         event.preventDefault();
 
         const form = event.target;
-
         const photoURL = form.photoURL.value;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+
+        // Validate password using regex
+        const passwordError = validatePassword(password);
+        if (passwordError) {
+            Swal.fire({
+                title: "Error!",
+                text: passwordError,
+                icon: "error",
+                confirmButtonText: "Close",
+                customClass: {
+                    confirmButton: "bg-error text-white",
+                },
+            });
+            return;
+        }
 
         registerUser(email, password)
             .then((user) => {
@@ -77,6 +108,7 @@ const Register = () => {
                 });
             });
     };
+
     return (
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-10">
             <h1 className="text-3xl font-bold text-center py-4 text-[#357ef0]">
@@ -170,12 +202,15 @@ const Register = () => {
                                         });
                                     }
                                     axios
-                                        .post("https://servicia-server.vercel.app/addUser", {
-                                            email: user.user.email,
-                                            name: user.user.displayName,
-                                            photoURL: user.user.photoURL,
-                                            password: "google",
-                                        })
+                                        .post(
+                                            "https://servicia-server.vercel.app/addUser",
+                                            {
+                                                email: user.user.email,
+                                                name: user.user.displayName,
+                                                photoURL: user.user.photoURL,
+                                                password: "google",
+                                            }
+                                        )
                                         .then((res) => {
                                             // console.log(res.data);
                                         });
