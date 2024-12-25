@@ -13,7 +13,9 @@ const MyServices = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/services/${user?.email}`)
+            .get(`http://localhost:3000/services/${user?.email}`, {
+                withCredentials: true,
+            })
             .then((res) => {
                 setMyServices(res.data);
             })
