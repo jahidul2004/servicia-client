@@ -1,4 +1,6 @@
-import { FaServicestack } from "react-icons/fa";
+import { BsThreads } from "react-icons/bs";
+import { FaFacebook, FaGithub, FaServicestack } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -13,6 +15,17 @@ const Footer = () => {
                     Copyright © {new Date().getFullYear()} - All right reserved
                     by Servicia
                 </p>
+                <div className="flex gap-4 mt-4 text-2xl text-[#357ef0]">
+                    <Link to={"/"}>
+                        <FaFacebook />
+                    </Link>
+                    <Link to={"/"}>
+                        <FaGithub />
+                    </Link>
+                    <Link to={"/"}>
+                        <BsThreads />
+                    </Link>
+                </div>
             </aside>
         </footer>
     );
