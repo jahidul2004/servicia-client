@@ -20,7 +20,7 @@ const MyReviews = () => {
             .then((res) => {
                 setMyReviews(res.data);
             });
-    }, [user.email]);
+    }, []);
 
     const handleDeleteReview = (id) => {
         Swal.fire({
@@ -41,9 +41,19 @@ const MyReviews = () => {
                         }
                     )
                     .then((res) => {
-                        setMyReviews((prevReviews) =>
-                            prevReviews.filter((review) => review.id !== id)
-                        );
+                        // setMyReviews((prevReviews) =>
+                        //     prevReviews.filter((review) => review.id !== id)
+                        // );
+                        axios
+                            .get(
+                                `http://localhost:3000/myReviews/${user.email}`,
+                                {
+                                    withCredentials: true,
+                                }
+                            )
+                            .then((res) => {
+                                setMyReviews(res.data);
+                            });
                         Swal.fire({
                             title: "Success!",
                             text: "Review deleted successfully",
@@ -131,7 +141,7 @@ const MyReviews = () => {
             </h1>
 
             <div className="flex flex-col gap-2">
-                {myReviews.map((review) => (
+                {myReviews?.map((review) => (
                     <div
                         key={review._id}
                         className="bg-[#357df017] p-8 my-4 flex flex-col md:flex-row gap-4 justify-center items-center"
