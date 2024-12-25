@@ -104,7 +104,7 @@ const ServiceDetails = () => {
             <div className="gap-4">
                 <div className="h-[480px] rounded-lg mb-5">
                     <img
-                        className="w-full h-full rounded-lg object-cover"
+                        className="w-full h-full rounded-lg object-cover border-2 border-[#357ef0]"
                         src={serviceImage}
                         alt=""
                     />
