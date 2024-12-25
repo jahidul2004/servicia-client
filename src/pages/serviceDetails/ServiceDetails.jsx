@@ -66,7 +66,9 @@ const ServiceDetails = () => {
         };
 
         axios
-            .post("http://localhost:3000/addReview", newReview)
+            .post("http://localhost:3000/addReview", newReview, {
+                withCredentials: true,
+            })
             .then((res) => {
                 console.log(res.data);
                 setReviews((prevReviews) => [newReview, ...prevReviews]);
