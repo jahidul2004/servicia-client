@@ -35,7 +35,10 @@ const MyReviews = () => {
             if (result.isConfirmed) {
                 axios
                     .delete(
-                        `http://localhost:3000/deleteReview/${user.email}/${id}`
+                        `http://localhost:3000/deleteReview/${user.email}/${id}`,
+                        {
+                            withCredentials: true,
+                        }
                     )
                     .then((res) => {
                         setMyReviews((prevReviews) =>
