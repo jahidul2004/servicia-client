@@ -71,10 +71,16 @@ const MyReviews = () => {
 
     const handleEditReview = () => {
         axios
-            .put(`http://localhost:3000/updateReview/${selectedReview._id}`, {
-                review: editedReview,
-                rating: editedRating,
-            })
+            .put(
+                `http://localhost:3000/updateReview/${selectedReview._id}`,
+                {
+                    review: editedReview,
+                    rating: editedRating,
+                },
+                {
+                    withCredentials: true,
+                }
+            )
             .then((res) => {
                 setMyReviews((prevReviews) =>
                     prevReviews.map((review) =>
