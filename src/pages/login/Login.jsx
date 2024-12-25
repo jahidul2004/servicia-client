@@ -18,7 +18,6 @@ const Login = () => {
 
         loginUser(email, password)
             .then((user) => {
-                console.log(user);
                 setUser(user);
                 if (user) {
                     Swal.fire({
@@ -43,7 +42,7 @@ const Login = () => {
                         }
                     )
                     .then((res) => {
-                        console.log(res.data);
+                        
                     });
             })
             .catch((error) => {
@@ -119,7 +118,6 @@ const Login = () => {
                         onClick={() => {
                             googleLogin()
                                 .then((user) => {
-                                    console.log(user);
                                     setUser(user);
                                     if (user) {
                                         Swal.fire({
@@ -141,7 +139,7 @@ const Login = () => {
                                             password: "google",
                                         })
                                         .then((res) => {
-                                            console.log(res.data);
+                                            // console.log(res.data);
                                         });
 
                                     axios
@@ -155,7 +153,7 @@ const Login = () => {
                                             }
                                         )
                                         .then((res) => {
-                                            console.log(res.data);
+                                            // console.log(res.data);
                                         });
                                 })
                                 .catch((error) => {

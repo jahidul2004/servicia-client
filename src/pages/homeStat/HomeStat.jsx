@@ -10,7 +10,6 @@ const HomeStat = () => {
         });
     }, []);
 
-    console.log(count);
     return (
         <div className="bg-[#357ef0] p-4 py-10 flex flex-col md:flex-row justify-center md:justify-around text-white text-center gap-4 my-10">
             <div className="w-[180px] h-[180px] rounded-full border-2 flex flex-col items-center justify-center">

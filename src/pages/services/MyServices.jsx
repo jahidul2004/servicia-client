@@ -70,7 +70,6 @@ const MyServices = () => {
                 }
             )
             .then((res) => {
-                console.log(res.data);
                 setMyServices((prevServices) =>
                     prevServices.map((service) =>
                         service._id === _id
@@ -118,7 +117,6 @@ const MyServices = () => {
                         withCredentials: true,
                     })
                     .then((res) => {
-                        console.log(res.data);
                         setMyServices((prevServices) =>
                             prevServices.filter((service) => service._id !== id)
                         );

@@ -70,7 +70,6 @@ const ServiceDetails = () => {
                 withCredentials: true,
             })
             .then((res) => {
-                console.log(res.data);
                 setReviews((prevReviews) => [newReview, ...prevReviews]);
 
                 Swal.fire({

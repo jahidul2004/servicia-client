@@ -21,7 +21,6 @@ const Register = () => {
 
         registerUser(email, password)
             .then((user) => {
-                console.log(user);
                 updateUserProfile({
                     displayName: name,
                     photoURL: photoURL,
@@ -47,7 +46,7 @@ const Register = () => {
                             password,
                         })
                         .then((res) => {
-                            console.log(res.data);
+                            // console.log(res.data);
                         });
 
                     axios
@@ -61,7 +60,7 @@ const Register = () => {
                             }
                         )
                         .then((res) => {
-                            console.log(res.data);
+                            // console.log(res.data);
                         });
                 }
             })
@@ -156,7 +155,6 @@ const Register = () => {
                         onClick={() => {
                             googleLogin()
                                 .then((user) => {
-                                    console.log(user);
                                     setUser(user);
 
                                     if (user) {
@@ -179,7 +177,7 @@ const Register = () => {
                                             password: "google",
                                         })
                                         .then((res) => {
-                                            console.log(res.data);
+                                            // console.log(res.data);
                                         });
 
                                     axios
@@ -195,7 +193,7 @@ const Register = () => {
                                             }
                                         )
                                         .then((res) => {
-                                            console.log(res.data);
+                                            // console.log(res.data);
                                         });
                                 })
                                 .catch((error) => {
