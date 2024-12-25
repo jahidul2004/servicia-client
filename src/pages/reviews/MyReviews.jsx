@@ -14,7 +14,9 @@ const MyReviews = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/myReviews/${user.email}`)
+            .get(`http://localhost:3000/myReviews/${user.email}`, {
+                withCredentials: true,
+            })
             .then((res) => {
                 setMyReviews(res.data);
             });
