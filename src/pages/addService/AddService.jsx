@@ -35,7 +35,9 @@ const AddService = () => {
         };
 
         axios
-            .post("http://localhost:3000/addService", newService)
+            .post("http://localhost:3000/addService", newService, {
+                withCredentials: true,
+            })
             .then((response) => {
                 form.reset();
 
