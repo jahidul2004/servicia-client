@@ -20,6 +20,7 @@ const AddService = () => {
         const price = form.price.value;
         const description = form.description.value;
         const serviceCreator = user.email;
+        const addedDate = new Date().toLocaleDateString();
 
         const newService = {
             serviceImage,
@@ -30,6 +31,7 @@ const AddService = () => {
             price,
             description,
             serviceCreator,
+            addedDate,
         };
 
         axios

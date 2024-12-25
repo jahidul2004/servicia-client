@@ -33,6 +33,7 @@ const ServiceDetails = () => {
         category,
         companyName,
         websiteURL,
+        addedDate,
     } = data;
 
     const [rating, setRating] = useState(0);
@@ -111,7 +112,7 @@ const ServiceDetails = () => {
                 </div>
                 <div>
                     <div className="rounded-lg flex flex-col md:flex-row gap-2">
-                        <div className="bg-[#357df017] rounded-lg p-4 w-full md:w-[60%]">
+                        <div className="bg-[#357df017] rounded-lg p-4 w-full md:w-[60%] relative">
                             <p className="font-bold flex items-center gap-2">
                                 <TbCategory />
                                 Category: {category}
@@ -141,6 +142,10 @@ const ServiceDetails = () => {
                                 >
                                     {websiteURL}
                                 </Link>
+                            </p>
+
+                            <p className="absolute right-2 bottom-2 font-semibold">
+                                Added Date:{addedDate && addedDate}
                             </p>
                         </div>
                         <div className="w-full md:w-[40%] bg-[#357df017] rounded-lg p-4">
