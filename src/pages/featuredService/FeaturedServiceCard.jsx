@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const FeaturedServiceCard = ({
     serviceImage,
@@ -9,11 +10,13 @@ const FeaturedServiceCard = ({
 }) => {
     return (
         <div className="bg-[#357df017] rounded-lg p-4">
-            <div className="rounded-lg h-[250px]">
-                <img
+            <div className="rounded-lg h-[250px] overflow-hidden">
+                <motion.img
                     className="rounded-lg w-full h-full object-cover"
                     src={serviceImage}
                     alt=""
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
                 />
             </div>
             <div className="mt-4">
