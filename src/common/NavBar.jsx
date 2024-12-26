@@ -20,7 +20,21 @@ const NavBar = () => {
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
-                console.log("User signed out successfully");
+                // Cookie Clear API Call
+                fetch("https://servicia-server.vercel.app/logout", {
+                    method: "POST",
+                    credentials: "include",
+                })
+                    .then((res) => {
+                        if (res.ok) {
+                            console.log("Cookie cleared successfully");
+                        }
+                    })
+                    .catch((err) => {
+                        console.error("Error clearing cookies:", err);
+                    });
+
+                // Successful Sign-Out
                 Swal.fire({
                     title: "Success!",
                     text: "User signed out successfully",
@@ -32,7 +46,8 @@ const NavBar = () => {
                 });
             })
             .catch((error) => {
-                console.log(error);
+                // Error Handling
+                console.error("Sign-out error:", error);
                 Swal.fire({
                     title: "Error!",
                     text: error.message,
@@ -88,7 +103,6 @@ const NavBar = () => {
                             Add Service
                         </NavLink>
                     </li>
-
                     <li>
                         <NavLink
                             to={`/myServices/${user.email}`}
@@ -148,6 +162,7 @@ const NavBar = () => {
             )}
         </>
     );
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -197,7 +212,7 @@ const NavBar = () => {
                             <img
                                 className="w-full h-full rounded-full"
                                 src={user.photoURL ? user.photoURL : userIco}
-                                alt=""
+                                alt="User Icon"
                             />
                         </div>
                         <button

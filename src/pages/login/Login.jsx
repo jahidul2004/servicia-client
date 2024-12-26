@@ -42,7 +42,7 @@ const Login = () => {
                         }
                     )
                     .then((res) => {
-                        
+                        // console.log(res.data);
                     });
             })
             .catch((error) => {
@@ -132,12 +132,15 @@ const Login = () => {
                                         });
                                     }
                                     axios
-                                        .post("https://servicia-server.vercel.app/addUser", {
-                                            email: user.user.email,
-                                            name: user.user.displayName,
-                                            photoURL: user.user.photoURL,
-                                            password: "google",
-                                        })
+                                        .post(
+                                            "https://servicia-server.vercel.app/addUser",
+                                            {
+                                                email: user.user.email,
+                                                name: user.user.displayName,
+                                                photoURL: user.user.photoURL,
+                                                password: "google",
+                                            }
+                                        )
                                         .then((res) => {
                                             // console.log(res.data);
                                         });
@@ -146,7 +149,9 @@ const Login = () => {
                                         .post(
                                             "https://servicia-server.vercel.app/jwt",
                                             {
-                                                user: { email: user.user.email },
+                                                user: {
+                                                    email: user.user.email,
+                                                },
                                             },
                                             {
                                                 withCredentials: true,
