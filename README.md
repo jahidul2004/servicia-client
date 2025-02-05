@@ -1,3 +1,6 @@
+![Repository Banner](https://i.ibb.co/tT8GpDMX/Screenshot-46.png)
+
+
 # Servicia
 
 Welcome to **Servicia** - a service reviewing platform that connects users with various service providers for home maintenance, cleaning, repairs, and more. With an intuitive user interface and seamless functionality, Servicia ensures an excellent service reviewing experience.
