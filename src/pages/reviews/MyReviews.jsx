@@ -11,6 +11,7 @@ const MyReviews = () => {
     const [selectedReview, setSelectedReview] = useState(null);
     const [editedReview, setEditedReview] = useState("");
     const [editedRating, setEditedRating] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios
@@ -19,8 +20,9 @@ const MyReviews = () => {
             })
             .then((res) => {
                 setMyReviews(res.data);
+                setLoading(false);
             });
-    }, []);
+    }, [user.email]);
 
     const handleDeleteReview = (id) => {
         Swal.fire({
@@ -41,9 +43,6 @@ const MyReviews = () => {
                         }
                     )
                     .then((res) => {
-                        // setMyReviews((prevReviews) =>
-                        //     prevReviews.filter((review) => review.id !== id)
-                        // );
                         axios
                             .get(
                                 `https://servicia-server.vercel.app/myReviews/${user.email}`,
@@ -53,6 +52,7 @@ const MyReviews = () => {
                             )
                             .then((res) => {
                                 setMyReviews(res.data);
+                                setLoading(false);
                             });
                         Swal.fire({
                             title: "Success!",
@@ -128,6 +128,14 @@ const MyReviews = () => {
                 });
             });
     };
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center py-10">
+                <span className="loading loading-bars loading-lg"></span>
+            </div>
+        );
+    }
 
     return (
         <div className="mx-4">
