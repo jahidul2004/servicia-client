@@ -12,7 +12,7 @@ const FeaturedService = () => {
         });
     }, []);
     return (
-        <div className="mx-4">
+        <div className="mx-4 dark:bg-[#0a1728] dark:text-white">
             <h1 className="text-3xl md:text-4xl font-bold text-center py-10 text-[#357ef0]">
                 Featured Services!
                 <br />

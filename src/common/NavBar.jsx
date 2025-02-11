@@ -1,26 +1,40 @@
+import { useState, useEffect, useContext } from "react";
 import { FaServicestack } from "react-icons/fa";
 import { GoHome } from "react-icons/go";
 import { IoIosLogIn } from "react-icons/io";
 import {
     MdAppRegistration,
     MdAssignmentAdd,
+    MdOutlineDarkMode,
     MdOutlineDesignServices,
     MdOutlineReviews,
 } from "react-icons/md";
 import { VscPreview } from "react-icons/vsc";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../context/authContext/AuthContext";
-import { useContext } from "react";
-import userIco from "../assets/user.png";
 import Swal from "sweetalert2";
+import { CiLight } from "react-icons/ci";
+import userIco from "../assets/user.png";
 
 const NavBar = () => {
     const { user, signOutUser } = useContext(AuthContext);
+    const [darkMode, setDarkMode] = useState(
+        localStorage.getItem("theme") === "dark"
+    );
+
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        } else {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+        }
+    }, [darkMode]);
 
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
-                // Cookie Clear API Call
                 fetch("https://servicia-server.vercel.app/logout", {
                     method: "POST",
                     credentials: "include",
@@ -34,7 +48,6 @@ const NavBar = () => {
                         console.error("Error clearing cookies:", err);
                     });
 
-                // Successful Sign-Out
                 Swal.fire({
                     title: "Success!",
                     text: "User signed out successfully",
@@ -46,7 +59,6 @@ const NavBar = () => {
                 });
             })
             .catch((error) => {
-                // Error Handling
                 console.error("Sign-out error:", error);
                 Swal.fire({
                     title: "Error!",
@@ -68,7 +80,7 @@ const NavBar = () => {
                     className={({ isActive }) =>
                         isActive
                             ? "bg-[#357ef0] text-white"
-                            : "bg-transparent text-black"
+                            : "bg-transparent dark:text-white"
                     }
                 >
                     <GoHome />
@@ -81,7 +93,7 @@ const NavBar = () => {
                     className={({ isActive }) =>
                         isActive
                             ? "bg-[#357ef0] text-white"
-                            : "bg-transparent text-black"
+                            : "bg-transparent dark:text-white"
                     }
                 >
                     <VscPreview />
@@ -96,7 +108,7 @@ const NavBar = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-[#357ef0] text-white"
-                                    : "bg-transparent text-black"
+                                    : "bg-transparent dark:text-white"
                             }
                         >
                             <MdAssignmentAdd />
@@ -109,7 +121,7 @@ const NavBar = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-[#357ef0] text-white"
-                                    : "bg-transparent text-black"
+                                    : "bg-transparent dark:text-white"
                             }
                         >
                             <MdOutlineDesignServices />
@@ -122,7 +134,7 @@ const NavBar = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-[#357ef0] text-white"
-                                    : "bg-transparent text-black"
+                                    : "bg-transparent dark:text-white"
                             }
                         >
                             <MdOutlineReviews />
@@ -138,7 +150,7 @@ const NavBar = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-[#357ef0] text-white"
-                                    : "bg-transparent text-black"
+                                    : "bg-transparent dark:text-white"
                             }
                         >
                             <MdAppRegistration />
@@ -151,7 +163,7 @@ const NavBar = () => {
                             className={({ isActive }) =>
                                 isActive
                                     ? "bg-[#357ef0] text-white"
-                                    : "bg-transparent text-black"
+                                    : "bg-transparent dark:text-white"
                             }
                         >
                             <IoIosLogIn />
@@ -164,7 +176,7 @@ const NavBar = () => {
     );
 
     return (
-        <div className="navbar sticky top-0 z-50 bg-base-100">
+        <div className="navbar sticky top-0 z-50 bg-base-100 dark:bg-gray-900 dark:text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div
@@ -189,7 +201,7 @@ const NavBar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                        className="menu menu-sm dropdown-content bg-base-100 dark:bg-gray-800 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                     >
                         {links}
                     </ul>
@@ -202,7 +214,13 @@ const NavBar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">{links}</ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end flex items-center gap-3">
+                <button
+                    onClick={() => setDarkMode(!darkMode)}
+                    className="btn btn-circle bg-gray-200 dark:bg-gray-700"
+                >
+                    {darkMode ? <CiLight size={24} /> : <MdOutlineDarkMode size={24} />}
+                </button>
                 {user ? (
                     <div className="flex gap-2">
                         <div

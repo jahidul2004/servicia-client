@@ -4,7 +4,7 @@ import NavBar from "../common/NavBar";
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className="dark:bg-[#0a1728] dark:text-white">
             {/* Navbar start */}
             <NavBar></NavBar>
             {/* Navbar end */}
