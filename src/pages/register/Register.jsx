@@ -111,61 +111,61 @@ const Register = () => {
     };
 
     return (
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto my-10">
+        <div className="card bg-base-100 dark:bg-[#0f203a] w-full max-w-sm shrink-0 shadow-2xl mx-auto my-10">
             <h1 className="text-3xl font-bold text-center py-4 text-[#357ef0]">
                 Register
             </h1>
             <form onSubmit={handleRegister} className="card-body">
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Photo URL</span>
+                        <span className="label-text dark:text-white">Photo URL</span>
                     </label>
                     <input
                         name="photoURL"
                         type="url"
                         placeholder="Enter Photo URL"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text dark:text-white">Name</span>
                     </label>
                     <input
                         name="name"
                         type="text"
                         placeholder="Enter Your Name"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Email</span>
+                        <span className="label-text dark:text-white">Email</span>
                     </label>
                     <input
                         name="email"
                         type="email"
                         placeholder="email"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Password</span>
+                        <span className="label-text dark:text-white">Password</span>
                     </label>
                     <input
                         name="password"
                         type="password"
                         placeholder="password"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn bg-[#357ef0] text-white">
+                    <button className="border-none shadow-none btn bg-[#357ef0] text-white">
                         Register
                     </button>
                 </div>
@@ -248,7 +248,7 @@ const Register = () => {
                                 });
                         }}
                         type="button"
-                        className="btn w-full bg-[#357ef0] text-white"
+                        className="btn border-none shadow-none w-full bg-[#357ef0] text-white"
                     >
                         <FaGoogle />
                         Login With Google
