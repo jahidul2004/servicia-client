@@ -188,14 +188,14 @@ const MyReviews = () => {
             {/* Modal start from here */}
             {selectedReview && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div className="bg-white p-8 rounded-lg w-96">
+                    <div className="bg-white dark:bg-[#0f203a] p-8 rounded-lg w-96">
                         <h2 className="text-xl font-bold mb-4">
                             Edit Your Review
                         </h2>
                         <textarea
                             value={editedReview}
                             onChange={(e) => setEditedReview(e.target.value)}
-                            className="textarea textarea-bordered w-full h-32 mb-4"
+                            className="textarea textarea-bordered w-full h-32 mb-4 dark:bg-[#0a1728]"
                         ></textarea>
                         <div className="mb-4">
                             <h3 className="text-lg font-semibold mb-2">
