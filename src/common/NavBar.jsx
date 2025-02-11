@@ -10,7 +10,7 @@ import {
     MdOutlineReviews,
 } from "react-icons/md";
 import { VscPreview } from "react-icons/vsc";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import AuthContext from "../context/authContext/AuthContext";
 import Swal from "sweetalert2";
 import { CiLight } from "react-icons/ci";
@@ -142,38 +142,10 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                 </>
-            ) : (
-                <>
-                    <li>
-                        <NavLink
-                            to="/register"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "bg-[#357ef0] text-white"
-                                    : "bg-transparent dark:text-white"
-                            }
-                        >
-                            <MdAppRegistration />
-                            Register
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
-                            to="/login"
-                            className={({ isActive }) =>
-                                isActive
-                                    ? "bg-[#357ef0] text-white"
-                                    : "bg-transparent dark:text-white"
-                            }
-                        >
-                            <IoIosLogIn />
-                            Login
-                        </NavLink>
-                    </li>
-                </>
-            )}
+            ) : null}
         </>
     );
+    
 
     return (
         <div className="navbar sticky top-0 z-50 bg-base-100 dark:bg-gray-900 dark:text-white">

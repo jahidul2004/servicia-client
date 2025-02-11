@@ -249,7 +249,7 @@ const MyServices = () => {
             {/* Modal */}
             {isModalOpen && (
                 <div className="max-h-[100vh] fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div className="bg-white rounded-lg p-6 w-[90%] md:w-[600px]">
+                    <div className="bg-white dark:bg-[#0f203a] rounded-lg p-6 w-[90%] md:w-[600px]">
                         <h2 className="text-2xl font-bold mb-4">
                             Update Service
                         </h2>
@@ -270,7 +270,7 @@ const MyServices = () => {
                                             serviceImage: e.target.value,
                                         })
                                     }
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full dark:bg-[#0a1728]"
                                 />
                             </div>
 
@@ -287,7 +287,7 @@ const MyServices = () => {
                                             category: e.target.value,
                                         })
                                     }
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full dark:bg-[#0a1728]"
                                 />
                             </div>
 
@@ -304,7 +304,7 @@ const MyServices = () => {
                                             serviceTitle: e.target.value,
                                         })
                                     }
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full dark:bg-[#0a1728]"
                                 />
                             </div>
 
@@ -321,7 +321,7 @@ const MyServices = () => {
                                             price: e.target.value,
                                         })
                                     }
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full dark:bg-[#0a1728]"
                                 />
                             </div>
 
@@ -338,7 +338,7 @@ const MyServices = () => {
                                             companyName: e.target.value,
                                         })
                                     }
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full dark:bg-[#0a1728]"
                                 />
                             </div>
 
@@ -355,7 +355,7 @@ const MyServices = () => {
                                             websiteURL: e.target.value,
                                         })
                                     }
-                                    className="input input-bordered w-full"
+                                    className="input input-bordered w-full dark:bg-[#0a1728]"
                                 />
                             </div>
 
@@ -371,7 +371,7 @@ const MyServices = () => {
                                             description: e.target.value,
                                         })
                                     }
-                                    className="textarea textarea-bordered w-full"
+                                    className="textarea textarea-bordered w-full dark:bg-[#0a1728]"
                                 ></textarea>
                             </div>
                             <div className="flex gap-2">
