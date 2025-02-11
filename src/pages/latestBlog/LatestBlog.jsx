@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const LatestBlog = () => {
     return (
         <div className="mx-4">
@@ -21,9 +23,12 @@ const LatestBlog = () => {
                         with Tesla. We are now providing Tesla's services in our
                         platform.
                     </p>
-                    <button className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none">
+                    <Link
+                        to={"https://www.tesla.com/blog"}
+                        className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none"
+                    >
                         Read More
-                    </button>
+                    </Link>
                 </div>
                 <div className="bg-[#f1f1f1] dark:bg-[#0f203a] dark:text-white p-4">
                     <img
@@ -39,9 +44,12 @@ const LatestBlog = () => {
                         Participate in the contest and win exciting prizes from
                         Walton.
                     </p>
-                    <button className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none">
+                    <Link
+                        to={"https://waltonplaza.com.bd/about-us"}
+                        className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none"
+                    >
                         Read More
-                    </button>
+                    </Link>
                 </div>
                 <div className="bg-[#f1f1f1] dark:bg-[#0f203a] dark:text-white p-4">
                     <img
@@ -57,9 +65,12 @@ const LatestBlog = () => {
                         platform. We are happy to announce that now
                         collaborating with Truck Lagbe.
                     </p>
-                    <button className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none">
+                    <Link
+                        to={"https://blog.trucklagbe.com/bn"}
+                        className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none"
+                    >
                         Read More
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
