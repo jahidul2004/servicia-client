@@ -10,6 +10,7 @@ const MyServices = () => {
     const [searchKeyword, setSearchKeyword] = useState("");
     const [selectedService, setSelectedService] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios
@@ -18,13 +19,14 @@ const MyServices = () => {
             })
             .then((res) => {
                 setMyServices(res.data);
+                setLoading(false);
             })
             .catch((err) => {
                 console.log(err);
+                setLoading(false);
             });
     }, [user?.email]);
 
-    // Filter services based on the search keyword
     const filteredServices = myServices.filter((service) =>
         service.serviceTitle.toLowerCase().includes(searchKeyword.toLowerCase())
     );
@@ -50,7 +52,6 @@ const MyServices = () => {
             companyName,
             websiteURL,
             serviceImage,
-            addedDate,
         } = selectedService;
 
         axios
@@ -149,6 +150,7 @@ const MyServices = () => {
             <Helmet>
                 <title>Servicia|My Services</title>
             </Helmet>
+
             <div className="flex flex-col items-center py-10">
                 <h1 className="text-3xl font-bold text-center mb-4 text-[#357ef0]">
                     My Services!
@@ -178,73 +180,81 @@ const MyServices = () => {
                 </label>
             </div>
 
-            <div>
-                <div className="w-full">
-                    <table className="table w-full">
-                        {/* head */}
-                        <thead>
-                            <tr className="text-xl font-bold dark:text-white">
-                                <th>Service Title</th>
-                                <th>Price</th>
-                                <th>Added Date</th>
-                                <th>Take Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredServices.map((service) => (
-                                <tr>
-                                    <td>
-                                        <div className="flex items-center gap-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle h-12 w-12">
-                                                    <img
-                                                        src={
-                                                            service.serviceImage
-                                                        }
-                                                        alt="Avatar Tailwind CSS Component"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="font-bold">
-                                                    {service.serviceTitle}
-                                                </div>
-                                                <div className="text-sm opacity-50">
-                                                    {service.companyName}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <span className="badge badge-ghost badge-sm">
-                                            {service.price}$
-                                        </span>
-                                    </td>
-                                    <td>{service.addedDate}</td>
-                                    <th>
-                                        <button
-                                            onClick={() =>
-                                                handleUpdateService(service)
-                                            }
-                                            className="btn bg-[#357ef0] text-white"
-                                        >
-                                            Update Service
-                                        </button>
-                                        <button
-                                            onClick={() =>
-                                                handleDeleteService(service._id)
-                                            }
-                                            className="btn btn-error text-white"
-                                        >
-                                            Delete Service
-                                        </button>
-                                    </th>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+            {loading ? (
+                <div className="flex justify-center py-10">
+                    <span className="loading loading-bars loading-lg"></span>
                 </div>
-            </div>
+            ) : (
+                <div>
+                    <div className="w-full">
+                        <table className="table w-full">
+                            {/* head */}
+                            <thead>
+                                <tr className="text-xl font-bold dark:text-white">
+                                    <th>Service Title</th>
+                                    <th>Price</th>
+                                    <th>Added Date</th>
+                                    <th>Take Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredServices.map((service) => (
+                                    <tr key={service._id}>
+                                        <td>
+                                            <div className="flex items-center gap-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle h-12 w-12">
+                                                        <img
+                                                            src={
+                                                                service.serviceImage
+                                                            }
+                                                            alt="Avatar"
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className="font-bold">
+                                                        {service.serviceTitle}
+                                                    </div>
+                                                    <div className="text-sm opacity-50">
+                                                        {service.companyName}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span className="badge badge-ghost badge-sm">
+                                                {service.price}$
+                                            </span>
+                                        </td>
+                                        <td>{service.addedDate}</td>
+                                        <th>
+                                            <button
+                                                onClick={() =>
+                                                    handleUpdateService(service)
+                                                }
+                                                className="btn bg-[#357ef0] text-white"
+                                            >
+                                                Update Service
+                                            </button>
+                                            <button
+                                                onClick={() =>
+                                                    handleDeleteService(
+                                                        service._id
+                                                    )
+                                                }
+                                                className="btn btn-error text-white"
+                                            >
+                                                Delete Service
+                                            </button>
+                                        </th>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            )}
 
             {/* Modal */}
             {isModalOpen && (
@@ -347,7 +357,7 @@ const MyServices = () => {
                                     Website URL
                                 </label>
                                 <input
-                                    type="text"
+                                    type="url"
                                     value={selectedService.websiteURL}
                                     onChange={(e) =>
                                         setSelectedService({
@@ -359,34 +369,19 @@ const MyServices = () => {
                                 />
                             </div>
 
-                            <div className="md:col-span-2">
-                                <label className="block font-semibold mb-1">
-                                    Description
-                                </label>
-                                <textarea
-                                    value={selectedService.description}
-                                    onChange={(e) =>
-                                        setSelectedService({
-                                            ...selectedService,
-                                            description: e.target.value,
-                                        })
-                                    }
-                                    className="textarea textarea-bordered w-full dark:bg-[#0a1728]"
-                                ></textarea>
-                            </div>
-                            <div className="flex gap-2">
+                            <div className="flex justify-end gap-4">
                                 <button
                                     type="button"
                                     onClick={handleModalClose}
-                                    className="btn btn-error text-white"
+                                    className="btn bg-[#357ef0] text-white"
                                 >
-                                    Cancel
+                                    Close
                                 </button>
                                 <button
                                     type="submit"
                                     className="btn bg-[#357ef0] text-white"
                                 >
-                                    Save Changes
+                                    Update
                                 </button>
                             </div>
                         </form>
