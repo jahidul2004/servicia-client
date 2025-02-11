@@ -142,13 +142,41 @@ const NavBar = () => {
                         </NavLink>
                     </li>
                 </>
-            ) : null}
+            ) : (
+                <>
+                    <li>
+                        <NavLink
+                            to="/login"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-[#357ef0] text-white"
+                                    : "bg-transparent dark:text-white"
+                            }
+                        >
+                            <IoIosLogIn />
+                            Login
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/register"
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "bg-[#357ef0] text-white"
+                                    : "bg-transparent dark:text-white"
+                            }
+                        >
+                            <MdAppRegistration />
+                            Register
+                        </NavLink>
+                    </li>
+                </>
+            )}
         </>
     );
-    
 
     return (
-        <div className="navbar sticky top-0 z-50 bg-base-100 dark:bg-gray-900 dark:text-white">
+        <div className="shadow-lg navbar sticky top-0 z-50 bg-base-100 dark:bg-gray-900 dark:text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div
@@ -191,7 +219,11 @@ const NavBar = () => {
                     onClick={() => setDarkMode(!darkMode)}
                     className="btn btn-circle bg-gray-200 dark:bg-gray-700"
                 >
-                    {darkMode ? <CiLight size={24} /> : <MdOutlineDarkMode size={24} />}
+                    {darkMode ? (
+                        <CiLight size={24} />
+                    ) : (
+                        <MdOutlineDarkMode size={24} />
+                    )}
                 </button>
                 {user ? (
                     <div className="flex gap-2">
@@ -212,11 +244,7 @@ const NavBar = () => {
                             Log Out
                         </button>
                     </div>
-                ) : (
-                    <Link to={"/login"} className="btn bg-[#357ef0] text-white">
-                        Login
-                    </Link>
-                )}
+                ) : null}
             </div>
         </div>
     );
