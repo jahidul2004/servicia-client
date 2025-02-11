@@ -2,10 +2,14 @@ import StarRatings from "react-star-ratings";
 
 const ReviewsCard = ({ rating, name, photoURL, reviewText, postedDate }) => {
     return (
-        <div className="bg-[#357df015] border-l-8 border-[#357ef0] p-4 relative">
+        <div className="bg-[#357df015] rounded p-4 relative">
             <div>
                 <div className="w-[50px] h-[50px] rounded-full border-2 border-[#357ef0] p-1">
-                    <img className="rounded-full" src={photoURL} alt="" />
+                    <img
+                        className="rounded-full w-full h-full"
+                        src={photoURL}
+                        alt=""
+                    />
                 </div>
                 <h1 className="text-xl font-bold">{name}</h1>
             </div>
@@ -22,7 +26,9 @@ const ReviewsCard = ({ rating, name, photoURL, reviewText, postedDate }) => {
                     starSpacing="5px"
                 />
             </div>
-            <p className="absolute bottom-2 right-2 font-bold">{postedDate?postedDate:""}</p>
+            <p className="absolute bottom-2 right-2 font-bold">
+                {postedDate ? postedDate : ""}
+            </p>
         </div>
     );
 };
