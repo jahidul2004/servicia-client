@@ -155,7 +155,7 @@ const MyServices = () => {
                     <br />
                     --------------------------
                 </h1>
-                <label className="input input-bordered border-[#357ef0] flex items-center gap-2">
+                <label className="dark:bg-[#0f203a] input input-bordered border-[#357ef0] flex items-center gap-2">
                     <input
                         type="text"
                         className="grow"
@@ -183,7 +183,7 @@ const MyServices = () => {
                     <table className="table w-full">
                         {/* head */}
                         <thead>
-                            <tr className="text-xl font-bold">
+                            <tr className="text-xl font-bold dark:text-white">
                                 <th>Service Title</th>
                                 <th>Price</th>
                                 <th>Added Date</th>
