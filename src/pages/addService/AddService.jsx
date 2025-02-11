@@ -65,7 +65,7 @@ const AddService = () => {
             });
     };
     return (
-        <div className="card bg-base-100 w-full max-w-2xl shrink-0 shadow-2xl mx-auto my-10">
+        <div className="dark:bg-[#0f203a] card bg-base-100 w-full max-w-2xl shrink-0 shadow-2xl mx-auto my-10">
             <Helmet>
                 <title>Servicia|Add Service</title>
             </Helmet>
@@ -78,63 +78,73 @@ const AddService = () => {
             >
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Service Image</span>
+                        <span className="label-text dark:text-white">
+                            Service Image
+                        </span>
                     </label>
                     <input
                         name="serviceImage"
                         type="url"
                         placeholder="Enter image URL"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Service Title</span>
+                        <span className="label-text dark:text-white">
+                            Service Title
+                        </span>
                     </label>
                     <input
                         name="serviceTitle"
                         type="text"
                         placeholder="Enter service title"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Company Name</span>
+                        <span className="label-text dark:text-white">
+                            Company Name
+                        </span>
                     </label>
                     <input
                         name="companyName"
                         type="text"
                         placeholder="Enter company name"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Website</span>
+                        <span className="label-text dark:text-white">
+                            Website
+                        </span>
                     </label>
                     <input
                         name="websiteURL"
                         type="url"
                         placeholder="Enter website URL"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Category</span>
+                        <span className="label-text dark:text-white">
+                            Category
+                        </span>
                     </label>
                     <select
                         name="category"
-                        className="select select-bordered"
+                        className="select select-bordered dark:bg-[#0a1728]"
                         required
                     >
                         <option value="">Select Category</option>
@@ -147,32 +157,36 @@ const AddService = () => {
 
                 <div className="form-control">
                     <label className="label">
-                        <span className="label-text">Price</span>
+                        <span className="label-text dark:text-white">
+                            Price
+                        </span>
                     </label>
                     <input
                         name="price"
                         type="number"
                         placeholder="Enter price"
-                        className="input input-bordered"
+                        className="input input-bordered dark:bg-[#0a1728]"
                         required
                     />
                 </div>
 
                 <div className="form-control md:col-span-2">
                     <label className="label">
-                        <span className="label-text">Description</span>
+                        <span className="label-text dark:text-white">
+                            Description
+                        </span>
                     </label>
                     <textarea
                         name="description"
                         placeholder="Enter Description"
-                        className="textarea textarea-bordered"
+                        className="textarea textarea-bordered dark:bg-[#0a1728]"
                         rows={4}
                         required
                     ></textarea>
                 </div>
 
                 <div className="form-control mt-6 md:col-span-2">
-                    <button className="btn bg-[#357ef0] text-white">
+                    <button className="btn border-none shadow-none bg-[#357ef0] text-white">
                         Add Now
                     </button>
                 </div>

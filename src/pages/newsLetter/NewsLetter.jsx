@@ -17,7 +17,7 @@ const NewsLetter = () => {
     };
     return (
         <div className="max-w-4xl mx-auto py-10 px-4">
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-[#0f203a] dark:text-white p-8 rounded-lg shadow-md">
                 <h2 className="text-3xl font-bold text-center mb-4 text-[#357ef0]">
                     Subscribe to our Newsletter
                 </h2>
@@ -32,7 +32,7 @@ const NewsLetter = () => {
                     <input
                         name="email"
                         type="email"
-                        className="w-full max-w-md p-3 mb-4 border border-gray-300 rounded-lg"
+                        className="dark:text-black w-full max-w-md p-3 mb-4 border border-gray-300 rounded-lg"
                         placeholder="Enter your email"
                         required
                     />

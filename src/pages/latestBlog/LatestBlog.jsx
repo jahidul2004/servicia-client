@@ -7,7 +7,7 @@ const LatestBlog = () => {
             </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-10">
-                <div className="bg-[#f1f1f1] p-4">
+                <div className="bg-[#f1f1f1] dark:bg-[#0f203a] dark:text-white p-4">
                     <img
                         className="w-full h-[200px] object-cover"
                         src="https://i.ibb.co.com/sWzLQ6T/Tesla-Logo-Hero.webp"
@@ -21,11 +21,11 @@ const LatestBlog = () => {
                         with Tesla. We are now providing Tesla's services in our
                         platform.
                     </p>
-                    <button className="btn bg-[#357ef0] text-white mt-2 rounded-none">
+                    <button className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none">
                         Read More
                     </button>
                 </div>
-                <div className="bg-[#f1f1f1] p-4">
+                <div className="bg-[#f1f1f1] dark:bg-[#0f203a] dark:text-white p-4">
                     <img
                         className="w-full h-[200px] object-cover"
                         src="https://i.ibb.co.com/8cZ4F0J/Walton1465127503.webp"
@@ -39,11 +39,11 @@ const LatestBlog = () => {
                         Participate in the contest and win exciting prizes from
                         Walton.
                     </p>
-                    <button className="btn bg-[#357ef0] text-white mt-2 rounded-none">
+                    <button className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none">
                         Read More
                     </button>
                 </div>
-                <div className="bg-[#f1f1f1] p-4">
+                <div className="bg-[#f1f1f1] dark:bg-[#0f203a] dark:text-white p-4">
                     <img
                         className="w-full h-[200px] object-cover"
                         src="https://i.ibb.co.com/0Mtnwpv/download.jpg"
@@ -57,7 +57,7 @@ const LatestBlog = () => {
                         platform. We are happy to announce that now
                         collaborating with Truck Lagbe.
                     </p>
-                    <button className="btn bg-[#357ef0] text-white mt-2 rounded-none">
+                    <button className="border-none shadow-none btn bg-[#357ef0] text-white mt-2 rounded-none">
                         Read More
                     </button>
                 </div>

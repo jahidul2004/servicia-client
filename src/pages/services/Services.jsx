@@ -53,7 +53,7 @@ const Services = () => {
                 </h1>
 
                 <div className="flex gap-4">
-                    <label className="input input-bordered border-[#357ef0] flex items-center gap-2">
+                    <label className="dark:bg-[#0f203a] input input-bordered border-[#357ef0] flex items-center gap-2">
                         <input
                             type="text"
                             className="grow"
@@ -76,7 +76,7 @@ const Services = () => {
                     </label>
 
                     <select
-                        className="select select-bordered border-[#357ef0]"
+                        className="dark:bg-[#0f203a] select select-bordered border-[#357ef0]"
                         value={selectedCategory}
                         onChange={handleCategoryChange}
                     >
