@@ -94,6 +94,7 @@ const Register = () => {
                             // console.log(res.data);
                         });
                 }
+                window.location.href = "/";
             })
             .catch((error) => {
                 console.log(error);
@@ -230,6 +231,7 @@ const Register = () => {
                                         .then((res) => {
                                             // console.log(res.data);
                                         });
+                                    window.location.href = "/";
                                 })
                                 .catch((error) => {
                                     console.log(error);

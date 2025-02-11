@@ -20,9 +20,11 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://servicia-server.vercel.app/reviews/${data._id}`).then((res) => {
-            setReviews(res.data);
-        });
+        axios
+            .get(`https://servicia-server.vercel.app/reviews/${data._id}`)
+            .then((res) => {
+                setReviews(res.data);
+            });
     }, []);
 
     const {
@@ -48,9 +50,9 @@ const ServiceDetails = () => {
     const handleReview = (e) => {
         e.preventDefault();
 
-        const email = user?.email;
         const name = user?.displayName;
         const photoURL = user?.photoURL;
+        const email = user?.email;
         const id = data._id;
         const postedDate = new Date().toLocaleDateString();
 
@@ -66,9 +68,7 @@ const ServiceDetails = () => {
         };
 
         axios
-            .post("https://servicia-server.vercel.app/addReview", newReview, {
-                withCredentials: true,
-            })
+            .post("https://servicia-server.vercel.app/addReview", newReview)
             .then((res) => {
                 setReviews((prevReviews) => [newReview, ...prevReviews]);
 

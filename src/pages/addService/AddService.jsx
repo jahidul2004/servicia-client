@@ -19,7 +19,7 @@ const AddService = () => {
         const category = form.category.value;
         const price = form.price.value;
         const description = form.description.value;
-        const serviceCreator = user.email;
+        const serviceCreator = user?.email;
         const addedDate = new Date().toLocaleDateString();
 
         const newService = {
@@ -35,9 +35,7 @@ const AddService = () => {
         };
 
         axios
-            .post("https://servicia-server.vercel.app/addService", newService, {
-                withCredentials: true,
-            })
+            .post("https://servicia-server.vercel.app/addService", newService)
             .then((response) => {
                 form.reset();
 

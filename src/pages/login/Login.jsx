@@ -30,6 +30,7 @@ const Login = () => {
                         },
                     });
                     form.reset();
+                    window.location.href = "/";
                 }
                 axios
                     .post(
@@ -160,6 +161,8 @@ const Login = () => {
                                         .then((res) => {
                                             // console.log(res.data);
                                         });
+
+                                    window.location.href = "/";
                                 })
                                 .catch((error) => {
                                     console.log(error);
