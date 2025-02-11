@@ -217,10 +217,10 @@ const NavBar = () => {
             <div className="navbar-end flex items-center gap-3">
                 <button
                     onClick={() => setDarkMode(!darkMode)}
-                    className="btn btn-circle bg-gray-200 dark:bg-gray-700"
+                    className="btn btn-circle border-[#357ef0] bg-gray-200 dark:bg-gray-700"
                 >
                     {darkMode ? (
-                        <CiLight size={24} />
+                        <CiLight className="text-[#357ef0]" size={24} />
                     ) : (
                         <MdOutlineDarkMode size={24} />
                     )}
