@@ -27,7 +27,7 @@ const FeaturedServiceCard = ({
                 <p className="font-bold">Price: {price} $</p>
                 <Link
                     to={`/serviceDetails/${id}`}
-                    className="btn bg-[#357ef0] text-white mt-4"
+                    className="btn bg-[#357ef0] border-none shadow-none text-white mt-4"
                 >
                     See Details
                 </Link>
