@@ -7,22 +7,29 @@ const Services = () => {
     const data = useLoaderData();
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
+    const [selectedSortOrder, setSelectedSortOrder] = useState("");
     const [filteredServices, setFilteredServices] = useState(data);
 
     const handleSearchChange = (event) => {
         const term = event.target.value;
         setSearchTerm(term);
-        filterServices(term, selectedCategory);
+        filterServices(term, selectedCategory, selectedSortOrder);
     };
 
     const handleCategoryChange = (event) => {
         const category = event.target.value;
         setSelectedCategory(category);
-        filterServices(searchTerm, category);
+        filterServices(searchTerm, category, selectedSortOrder);
     };
 
-    const filterServices = (term, category) => {
-        const filteredData = data.filter((service) => {
+    const handleSortChange = (event) => {
+        const sortOrder = event.target.value;
+        setSelectedSortOrder(sortOrder);
+        filterServices(searchTerm, selectedCategory, sortOrder);
+    };
+
+    const filterServices = (term, category, sortOrder) => {
+        let filteredData = data.filter((service) => {
             const matchesTerm =
                 service.serviceTitle
                     .toLowerCase()
@@ -39,6 +46,18 @@ const Services = () => {
             return matchesTerm && matchesCategory;
         });
 
+        // Sorting logic
+        if (sortOrder) {
+            filteredData = filteredData.sort((a, b) => {
+                if (sortOrder === "asc") {
+                    return a.price - b.price;
+                } else if (sortOrder === "desc") {
+                    return b.price - a.price;
+                }
+                return 0;
+            });
+        }
+
         setFilteredServices(filteredData);
     };
 
@@ -47,13 +66,12 @@ const Services = () => {
             <Helmet>
                 <title>Servicia | Services</title>
             </Helmet>
-            <div className="flex flex-col items-center mb-5">
-                <h1 className="text-3xl font-bold text-center text-[#357ef0] py-4">
-                    All Services <br /> --------------------------
-                </h1>
-
-                <div className="flex gap-4">
-                    <label className="dark:bg-[#0f203a] input input-bordered border-[#357ef0] flex items-center gap-2">
+            <h1 className="text-3xl font-bold text-center text-[#357ef0] py-4">
+                All Services <br /> --------------------------
+            </h1>
+            <div className="flex flex-col md:flex-row items-center justify-center mb-5 gap-4 md:gap-8">
+                <div className="flex gap-4 flex-col md:flex-row w-full md:w-auto">
+                    <label className="dark:bg-[#0f203a] input input-bordered border-[#357ef0] flex items-center gap-2 w-full md:w-auto">
                         <input
                             type="text"
                             className="grow"
@@ -76,7 +94,7 @@ const Services = () => {
                     </label>
 
                     <select
-                        className="dark:bg-[#0f203a] select select-bordered border-[#357ef0]"
+                        className="dark:bg-[#0f203a] select select-bordered border-[#357ef0] w-full md:w-auto"
                         value={selectedCategory}
                         onChange={handleCategoryChange}
                     >
@@ -85,6 +103,17 @@ const Services = () => {
                         <option value="Food">Food</option>
                         <option value="Transport">Transport</option>
                         <option value="Others">Others</option>
+                    </select>
+
+                    {/* Added sort dropdown */}
+                    <select
+                        className="dark:bg-[#0f203a] select select-bordered border-[#357ef0] w-full md:w-auto"
+                        value={selectedSortOrder}
+                        onChange={handleSortChange}
+                    >
+                        <option value="">Sort by Price</option>
+                        <option value="asc">Price: Low to High</option>
+                        <option value="desc">Price: High to Low</option>
                     </select>
                 </div>
             </div>
